@@ -1,0 +1,32 @@
+{
+    "name": "mogria/rhymebin",
+    "description": "A Website for finding rhymes",
+    "keywords": ["website", "lumen", "rhymes", "api"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/lumen-framework": "5.2.*",
+        "vlucas/phpdotenv": "~2.2",
+        "tymon/jwt-auth": "^0.5.9",
+        "basicit/lumen-vendor-publish": "^1.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/",
+            "database/"
+        ]
+    }
+}

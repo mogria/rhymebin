@@ -1,0 +1,30 @@
+{
+  "name": "rhymebin",
+  "description": "A website for finding rhymes",
+  "main": "",
+  "authors": [
+    "Mogria"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "angular",
+    "lumen"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "resources/assets/js_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap-sass": "^3.3.6",
+    "jquery": "^2.2.3",
+    "angular-ui-router": "^0.2.18"
+  }
+}
