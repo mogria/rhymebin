@@ -21,9 +21,9 @@
                 
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav" ui-view="nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="#/">Home</a></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">dafq</a></li>
+                        <li><a href="#/login">Login</a></li>
                     </ul>
                 </div>
             </div>

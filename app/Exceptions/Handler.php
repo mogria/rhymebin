@@ -45,6 +45,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        $fe = \Symfony\Component\Debug\Exception\FlattenException::create($e);
+        
+        $message = empty($fe->getMessage()) ? $fe->getClass() : $fe->getMessage();
+        $json = ['error' => $message];
+        $options = 0;
+        if(env('APP_DEBUG', false)) {
+            $json['trace'] = $fe->getTrace();
+            $options |= JSON_PRETTY_PRINT;
+        }
+        
+        return response()->json($json, $fe->getStatusCode(), $fe->getHeaders(), $options);
     }
 }

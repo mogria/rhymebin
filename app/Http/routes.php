@@ -15,8 +15,16 @@ $app->get('/', function() {
     return view('index');
 });
 
-$app->group(['prefix' => '/api', 'middlware' => 'jwt.auth'], function() use ($app) {
+$app->group(['prefix' => '/api', 'middleware' => 'jwt.auth'], function() use ($app) {
     $app->get('/', function () use ($app) {
         return $app->version();
     });
+    
+    $app->get('/api/users', 'UserController@getUsers');
+    $app->get('/api/users/{id}', 'UserController@getUser');
 });
+
+$app->post('/api/login', 'SessionController@postLogin');
+$app->post('/api/logout', 'SessionController@getLogout');
+$app->post('/api/refresh', 'SessionController@getRefresh');
+$app->post('/api/users', 'UserController@postUsers');

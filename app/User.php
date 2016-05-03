@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model implements AuthenticatableContract, AuthorizableContract, \Tymon\JWTAuth\Contracts\JWTSubject
 {
     use Authenticatable, Authorizable;
 
@@ -28,5 +28,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'password',
+        'created_at',
+        'updated_at'
     ];
+    
+    
+    public function getJWTCustomClaims() {
+        return [];
+    }
+
+    public function getJWTIdentifier() {
+        return $this->id;
+    }
+
 }

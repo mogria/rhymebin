@@ -25,6 +25,7 @@
     "angular": "^1.5.5",
     "bootstrap-sass": "^3.3.6",
     "jquery": "^2.2.3",
-    "angular-ui-router": "^0.2.18"
+    "angular-ui-router": "^0.2.18",
+    "satellizer": "^0.14.0"
   }
 }

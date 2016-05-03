@@ -23,8 +23,10 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
+
 $app->withFacades();
-$app->configure('jwt');
+
+$app->configure('auth');
 
 $app->withEloquent();
 
@@ -64,10 +66,10 @@ $app->singleton(
 //    App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-$app->routeMiddleware([
-    'jwt.auth'    => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-    'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
-]);
+/* $app->routeMiddleware([
+    //'jwt.auth'    => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+    //'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
+]); */
 
 /*
 |--------------------------------------------------------------------------
@@ -80,10 +82,24 @@ $app->routeMiddleware([
 |
 */
 
-$app->register('Tymon\JWTAuth\Providers\JWTAuthServiceProvider');
+
+/* 
+$app->alias('JWTAuth', 'Tymon\JWTAuth\Facades\JWTAuth');
+$app->alias('JWTFactory', 'Tymon\JWTAuth\Facades\JWTFactory');
+
+class_alias('Tymon\JWTAuth\Facades\JWTAuth', 'JWTAuth');
+class_alias('Tymon\JWTAuth\Facades\JWTFactory', 'JWTFactory');
+
+$app->alias('cache', 'Illuminate\Cache\CacheManager');
+$app->alias('auth', 'Illuminate\Auth\AuthManager'); */
+
+
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+//$app->register(Irazasyed\JwtAuthGuard\JwtAuthGuardServiceProvider::class);
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+//$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------
