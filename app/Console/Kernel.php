@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'BasicIT\LumenVendorPublish\VendorPublishCommand'
+        \BasicIT\LumenVendorPublish\VendorPublishCommand::class,
+        \Mlntn\Console\Commands\RouteList::class
     ];
 
     /**
