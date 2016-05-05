@@ -12,11 +12,11 @@ angular.module('rhymebin', [
         .state('login', {
             'url': '/login',
             'views': {
-                'content': {    
+                'content': {
                     'controller': 'LoginController',
                     'templateUrl': 'template-login'
                 }
-            }    
+            }
         })
         .state('wordEntry', {
             'url': '/words/new'
