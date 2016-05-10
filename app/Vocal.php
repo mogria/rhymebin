@@ -12,4 +12,8 @@ class Vocal extends Model
     ];
 
     protected $timestamps = false;
+    
+    public function syllables() {
+        return $this->hasMany(App\Syllable::class);
+    }
 }

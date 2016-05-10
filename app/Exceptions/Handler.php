@@ -45,9 +45,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        $json = [];
+        if ($e instanceof HttpResponseException) {
+            return $e->getResponse();
+        } elseif ($e instanceof ModelNotFoundException) {
+            $e = new NotFoundHttpException($e->getMessage(), $e);
+        } elseif ($e instanceof AuthorizationException) {
+            $e = new HttpException(403, $e->getMessage());
+        } elseif ($e instanceof ValidationException && $e->getResponse()) {
+            $json['validationErrors'] = $e->validator->errors();
+            $json['error'] = $e->getMessage();
+            return response()->json($json, $e->response->getStatusCode());
+        }
+        
         $fe = \Symfony\Component\Debug\Exception\FlattenException::create($e);
         
-        $message = empty($fe->getMessage()) ? $fe->getClass() : $fe->getMessage();
+        $message = empty($fe->getMessage()) ? $fe->getClass() : "{$fe->getClass()}: " .  $fe->getMessage();
         $json = ['error' => $message];
         $options = 0;
         if(env('APP_DEBUG', false)) {
@@ -55,6 +68,6 @@ class Handler extends ExceptionHandler
             $options |= JSON_PRETTY_PRINT;
         }
         
-        return response()->json($json, $fe->getStatusCode(), $fe->getHeaders(), $options);
+        return response()->json($json, $fe->getStatusCode(), $fe->getHeaders(), $options); 
     }
 }

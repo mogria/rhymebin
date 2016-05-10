@@ -11,5 +11,9 @@ class Language extends Model
         'name'
     ];
 
-    protected $timestamps = false;
+    public $timestamps = false;
+    
+    public function words() {
+        return $this->hasMany('words');
+    }
 }
