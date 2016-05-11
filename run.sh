@@ -4,6 +4,22 @@ SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "$SOURCE_DIR"
 
+check_if_program_available() {
+    echo -n "RhymeBin: checking if $1 is available "
+    "$1" --version &> /dev/null
+    if [ "$?" -eq 0 ];  then
+        echo "[OK]";
+    else
+        echo "[FAIL]";
+        exit 1
+    fi
+}
+
+check_if_program_available "php"
+check_if_program_available "composer"
+check_if_program_available "npm"
+
+
 echo "RhymeBin: Running composer install to grab lumen and other PHP dependencies"
 composer install
 
