@@ -15,13 +15,20 @@ $app->get('/', function() {
     return view('index');
 });
 
-$app->group(['prefix' => '/api', 'middleware' => 'jwt.auth'], function() use ($app) {
-    $app->get('/', function () use ($app) {
+$app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App\Http\Controllers'], function() use ($app) {
+    $app->get('/', function () use ($app) { 
         return $app->version();
     });
     
-    $app->get('/api/users', 'UserController@getUsers');
-    $app->get('/api/users/{id}', 'UserController@getUser');
+    $app->get('/users', 'UserController@getUsers');
+    $app->get('/users/{id}', 'UserController@getUser');
+    
+    $app->get('/words', 'WordController@getWords');
+    $app->get('/words/{id}', 'WordController@getWords');
+    $app->post('/words', 'WordController@postWords');
+    
+    $app->get('/languages', 'LanguageController@getLanguages');
+    $app->get('/languages/{id}', 'LanguageController@getLanguage');
 });
 
 $app->post('/api/login', 'SessionController@postLogin');
