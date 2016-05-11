@@ -22,11 +22,22 @@
             });
             
         }
+
+        $scope.mergeSyllables = function(firstSyllable) {
+            var syllables = $scope.syllables;
+            var index = syllables.indexOf(firstSyllable);
+            if(index == -1) return;
+            var secondSyllable = syllables[index + 1];
+            if(!secondSyllable) return;
+            firstSyllable.syllable += secondSyllable.syllable;
+            firstSyllable.end_index = secondSyllable.end_index;
+            // remove the second syllable object
+            syllables.splice(index + 1, 1);
+            $scope.syllables = syllables;
+            return false;
+        }
         
         $scope.wordSubmit = function() {
-            $auth.login({'name': $scope.name, 'password': $scope.password}).then(function(data) {
-                state.go('wordEntry');
-            });
             return false;
         };
     }]);

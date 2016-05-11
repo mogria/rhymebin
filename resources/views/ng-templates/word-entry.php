@@ -24,7 +24,7 @@
     <div class="form-group big">
         <span ng-repeat="syllable in syllables">
             <span>{{syllable.syllable}}</span>
-            <button ng-if="!$last" class="btn btn-default">+</button>
+            <button ng-if="!$last" class="btn btn-default" ng-click="mergeSyllables(syllable)">+</button>
         </span>
     </div>
 
