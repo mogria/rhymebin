@@ -15,9 +15,7 @@ class WordController extends Controller {
     
     public function postWords() {
         $this->validate($request, [
-            'name' => 'required|unique:users|between:3,30',
-            'email' => 'required|unique:users|between:5,255',
-            'password' => 'required|min:6'
+            'word' => 'required|alpha|unique:words|between:1,255',
         ]);
     }
 }
