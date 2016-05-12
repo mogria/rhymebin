@@ -10,12 +10,12 @@ class Syllable extends Model
     protected $fillable = [
         'start_index',
         'end_index',
-        'vocal_id',
+        'vowel_id',
         'word_id'
     ];
     
-    public function vocal() {
-        return $this->belongsTo(App\Vocal::class);
+    public function vowel() {
+        return $this->belongsTo(App\Vowel::class);
     }
     
     public function word() {

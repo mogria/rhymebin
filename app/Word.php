@@ -20,7 +20,7 @@ class Word extends Model
         return $this->hasMany(App\Syllable::class);
     }
     
-    public function vocals() {
-        return $this->hasManyThrough(App\Vocal::class, App\Syllable::class);
+    public function vowels() {
+        return $this->hasManyThrough(App\Vowel::class, App\Syllable::class);
     }
 }

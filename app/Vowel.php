@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vocal extends Model 
+class Vowel extends Model 
 {
 
     protected $fillable = [
-        'vocal'
+        'vowel'
     ];
 
     protected $timestamps = false;

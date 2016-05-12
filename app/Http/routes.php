@@ -30,8 +30,8 @@ $app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App
     $app->get('/languages', 'LanguageController@getLanguages');
     $app->get('/languages/{id}', 'LanguageController@getLanguage');
 
-    $app->get('/vocals', 'VocalController@getVocals');
-    $app->get('/vocals/{id}', 'VocalController@getVocal');
+    $app->get('/vowels', 'VowelController@getVowels');
+    $app->get('/vowels/{id}', 'VowelController@getVowels');
 });
 
 $app->post('/api/login', 'SessionController@postLogin');

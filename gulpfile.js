@@ -15,7 +15,7 @@ elixir(function(mix) {
                 , 'directives/formValidation.js'
                 , 'services/Word.js'
                 , 'services/Language.js'
-                , 'services/Vocal.js'
+                , 'services/Vowel.js'
                 , 'controllers/HomeController.js'
                 , 'controllers/NavController.js'
                 , 'controllers/AboutController.js'

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Vocal;
+use App\Vowel;
 
-class VocalController extends Controller {
-    public function getVocals() {
-        return Vocal::all();
+class VowelController extends Controller {
+    public function getVowels() {
+        return Vowel::all();
     }
     
-    public function getVocal($id) {
-        return Vocal::findOrFail($id);
+    public function getVowel($id) {
+        return Vowel::findOrFail($id);
     }
 }

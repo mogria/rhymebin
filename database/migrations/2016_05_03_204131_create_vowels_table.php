@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVocalsTable extends Migration
+class CreateVowelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateVocalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vocals', function (Blueprint $table) {
+        Schema::create('vowels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('vocal')->unqiue();
+            $table->string('vowel')->unqiue();
         });
     }
 
@@ -25,6 +25,6 @@ class CreateVocalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('vocals');
+        Schema::drop('vowels');
     }
 }

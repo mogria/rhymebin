@@ -25,8 +25,8 @@
         <span ng-repeat="(i,syllable) in syllables">
                 <span>{{syllable.syllable}}</span>
                 <span>
-                    <select ng-model="syllables[i].vocal_id">
-                        <option ng-repeat="vocal in vocals" value="{{vocal.id}}">{{vocal.vocal}}</option>
+                    <select ng-model="syllables[i].vowel_id">
+                        <option ng-repeat="vowel in vowels" value="{{vowel.id}}">{{vowel.vowel}}</option>
                     </select>
                 </span>
             <button ng-if="!$last" class="btn btn-default" ng-click="mergeSyllables(syllable)">+</button>

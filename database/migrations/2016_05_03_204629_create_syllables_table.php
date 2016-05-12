@@ -17,10 +17,10 @@ class CreateSyllablesTable extends Migration
             $table->integer('start_index')->unsigned();
             $table->integer('end_index')->unsigned();
             $table->integer('word_id')->unsigned();
-            $table->integer('vocal_id')->unsigned();
+            $table->integer('vowel_id')->unsigned();
             $table->timestamps();
             $table->foreign('word_id')->references('id')->on('words');
-            $table->foreign('vocal_id')->references('id')->on('vocals');
+            $table->foreign('vowel_id')->references('id')->on('vowels');
         });
     }
 
