@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('rhymebin.controllers.WordEntryController', ['ui.router']);
 
-    app.controller('WordEntryController', ['$scope', '$auth', 'Word', 'Language', function($scope, $auth, Word, Language) {
+    app.controller('WordEntryController', ['$scope', '$auth', 'Word', 'Language', 'Vocal', function($scope, $auth, Word, Language, Vocal) {
             
         $scope.word = '';
         $scope.language = 1;
@@ -14,11 +14,17 @@
         });
         
         $scope.syllables = [];
+
+        $scope.vocals = [];
+
+        Vocal.query(function(vocals) {
+            $scope.vocals = vocals;
+        });
         
         $scope.updateSyllables = function() {
             var syllables = $scope.word.split("");
             $scope.syllables = syllables.map(function(letter, i) {
-                return { 'syllable': letter, 'start_index': i, 'end_index': i + 1 }
+                return { 'syllable': letter, 'start_index': i, 'end_index': i + 1, 'vocal_id': 1 }
             });
             
         }

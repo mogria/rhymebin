@@ -8,7 +8,7 @@
         
     <div class="form-group">
         <label for="user">Language</label>
-        <select type="text" class="form-control" name="language" ng-model="language">
+        <select class="form-control" name="language" ng-model="language">
             <option ng-repeat="language in availableLanguages" value="{{language.id}}">{{language.name}}</option>
         </select>
     </div>
@@ -22,8 +22,13 @@
     <errors-for field="word"></errors-for>
     
     <div class="form-group big">
-        <span ng-repeat="syllable in syllables">
-            <span>{{syllable.syllable}}</span>
+        <span ng-repeat="(i,syllable) in syllables">
+                <span>{{syllable.syllable}}</span>
+                <span>
+                    <select ng-model="syllables[i].vocal_id">
+                        <option ng-repeat="vocal in vocals" value="{{vocal.id}}">{{vocal.vocal}}</option>
+                    </select>
+                </span>
             <button ng-if="!$last" class="btn btn-default" ng-click="mergeSyllables(syllable)">+</button>
         </span>
     </div>
