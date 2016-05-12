@@ -31,5 +31,10 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Schwiizerdütsch'],
             ['name' => 'English']
         ]);
+
+        echo "Rhymebin: adding vocals";
+
+        DB::table('vocals')->insert([
+        ]);
     }
 }
