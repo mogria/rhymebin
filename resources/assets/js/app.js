@@ -5,6 +5,7 @@ angular.module('rhymebin', [
     , 'rhymebin.directives.formValidation'
     , 'rhymebin.services.Word'
     , 'rhymebin.services.Language'
+    , 'rhymebin.services.Vocal'
     , 'rhymebin.controllers.HomeController'
     , 'rhymebin.controllers.NavController'
     , 'rhymebin.controllers.AboutController'
