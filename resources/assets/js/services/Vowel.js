@@ -1,6 +1,6 @@
 (function(){
     var app = angular.module('rhymebin.services.Vowel', ['ngResource']);
     app.factory('Vowel', ['$resource', 'API', '$auth', function($resource, API, $auth) {
-        return $resource(API + '/vowels/:id');
+        return $resource(API + '/languages/:language_id/vowels/:vowel_id');
     }]);
 })();

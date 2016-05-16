@@ -6,6 +6,7 @@ angular.module('rhymebin', [
     , 'rhymebin.services.Word'
     , 'rhymebin.services.Language'
     , 'rhymebin.services.Vowel'
+    , 'rhymebin.services.authService'
     , 'rhymebin.controllers.HomeController'
     , 'rhymebin.controllers.NavController'
     , 'rhymebin.controllers.AboutController'

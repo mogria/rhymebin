@@ -1,12 +1,12 @@
 (function() {
     var app = angular.module('rhymebin.controllers.NavController', ['ui.router']);
 
-    app.controller('NavController', ['$scope', '$rootScope', '$auth', '$state', function($scope, $rootScope, $auth, $state) {
+    app.controller('NavController', ['$scope', '$rootScope', 'authService', '$state', function($scope, $rootScope, authService, $state) {
         $scope.currentUrl = '/';
-        $scope.loggedIn = $auth.isAuthenticated();
+        $scope.loggedIn = authService.isAuthenticated();
         
         $rootScope.$on('$stateChangeStart',function(){
-            $scope.loggedIn = $auth.isAuthenticated();
+            $scope.loggedIn = authService.isAuthenticated();
         });
         
         $rootScope.$on('$stateChangeSuccess', function() {
@@ -14,7 +14,7 @@
         });
 
         $scope.logout = function() {
-            $auth.logout();
+            authService.logout();
             $state.go('home');
         };
     }]);

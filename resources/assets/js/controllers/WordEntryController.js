@@ -17,7 +17,7 @@
 
         $scope.vowels = [];
 
-        Vowel.query(function(vowels) {
+        Vowel.query({language_id: 1}, function(vowels) {
             $scope.vowels = vowels;
         });
         

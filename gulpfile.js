@@ -16,6 +16,7 @@ elixir(function(mix) {
                 , 'services/Word.js'
                 , 'services/Language.js'
                 , 'services/Vowel.js'
+                , 'services/authService.js'
                 , 'controllers/HomeController.js'
                 , 'controllers/NavController.js'
                 , 'controllers/AboutController.js'
