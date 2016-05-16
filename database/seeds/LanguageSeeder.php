@@ -7,9 +7,8 @@ class LanguageSeeder extends Seeder {
     public function run() {
         echo "RhymeBin: adding languages\n";
         DB::table('languages')->insert([
-            ['name' => 'Deutsch'],
-            ['name' => 'Schwiizerdütsch'],
-            ['name' => 'English']
+            ['id' => 1, 'name' => 'English'],
+            ['id' => 2, 'name' => 'Schwiizerdütsch']
         ]);
 
 
