@@ -8,8 +8,6 @@ class Word extends Model
 {
 
     protected $fillable = [
-        'word',
-        'language_id'
     ];
     
     public function language() {
@@ -17,10 +15,6 @@ class Word extends Model
     }
     
     public function syllables() {
-        return $this->hasMany(App\Syllable::class);
-    }
-    
-    public function vowels() {
-        return $this->hasManyThrough(App\Vowel::class, App\Syllable::class);
+        return $this->hasManyThough(App\Syllable::class, App\SyllableMapping::class);
     }
 }

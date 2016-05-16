@@ -11,7 +11,7 @@ class Vowel extends Model
         'vowel'
     ];
 
-    protected $timestamps = false;
+    public $timestamps = false;
     
     public function syllables() {
         return $this->hasMany(App\Syllable::class);

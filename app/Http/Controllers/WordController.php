@@ -29,7 +29,7 @@ class WordController extends Controller {
         $filteredSearch = preg_replace('/ +/', ' ', trim($request->input('search')));
         $wordsGiven = explode(" ", $filteredSearch);
         
-        $wordsFound = Word::with('syllables', 'vowels')->whereIn('word', $wordsGiven)->get();
+        $wordsFound = Word::with('syllables', 'syllable_mappings')->whereIn('word', $wordsGiven)->get();
         if(count($wordsFound) === count($wordsGiven)) {
             
         } else {
