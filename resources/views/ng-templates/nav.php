@@ -21,7 +21,7 @@
             
             <!-- show when user is logged in -->
             <li ng-class="{active: currentUrl === '/words/new'}" ng-show="loggedIn"><a href="#/words/new">Add Words</a></li>
-            <li ng-show="loggedIn"><a ng-click="logout()">Log out</a><li>
+            <li ng-show="loggedIn"><a ng-click="logout()" href="">Log out</a><li>
             
             <!-- show when user is logged out -->
             <li ng-class="{active: currentUrl === '/register'}" ng-show="!loggedIn"><a href="#/register">Register</a></li>
