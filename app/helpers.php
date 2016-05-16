@@ -19,7 +19,7 @@ function angularTemplate($name) {
 
 function allAngularTemplates() {
     $templateFiles = array_filter(scandir(base_path('resources/views/ng-templates')), function($file) {
-        return pathinfo($file, PATHINFO_EXTENSION) === "php";
+        return pathinfo($file, PATHINFO_EXTENSION) === "html";
     });
     $templateNames = array_map(function($templateFile) {
         return pathinfo($templateFile, PATHINFO_FILENAME);
