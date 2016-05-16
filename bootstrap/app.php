@@ -98,9 +98,9 @@ $app->alias('cache', 'Illuminate\Cache\CacheManager');
 $app->alias('auth', 'Illuminate\Auth\AuthManager'); */
 
 
+$app->register(App\Providers\AppServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 //$app->register(Irazasyed\JwtAuthGuard\JwtAuthGuardServiceProvider::class);
-// $app->register(App\Providers\AppServiceProvider::class);
 //$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 

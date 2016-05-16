@@ -12,10 +12,10 @@ class Syllable extends Model
     ];
     
     public function vowel() {
-        return $this->belongsTo(App\Vowel::class);
+        return $this->belongsTo(\App\Vowel::class);
     }
     
     public function words() {
-        return $this->hasManyThrough(App\Word::class, App\SyllableMapping::class);
+        return $this->hasManyThrough(\App\Word::class, \App\SyllableMapping::class);
     }
 }

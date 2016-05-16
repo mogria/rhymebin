@@ -10,10 +10,16 @@ class Vowel extends Model
     protected $fillable = [
         'vowel'
     ];
-
+    
+    
     public $timestamps = false;
     
+    
     public function syllables() {
-        return $this->hasMany(App\Syllable::class);
+        return $this->hasMany(\App\Syllable::class);
+    }
+    
+    public function vowelExamples() {
+        return $this->hasMany(\App\VowelExample::class);
     }
 }

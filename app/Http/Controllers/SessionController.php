@@ -8,12 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class SessionController extends Controller {
     
     public function postLogin(Request $request) {
-        /* $this->validate($request, [
-            'name' => 'required',
-            'password' => 'required'
-        ]); */
-        
-        $token = $token = Auth::attempt($request->only('name', 'password'));
+        $token = Auth::attempt($request->only('name', 'password'));
 
         if (!$token)
         {

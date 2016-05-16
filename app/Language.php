@@ -14,6 +14,10 @@ class Language extends Model
     public $timestamps = false;
     
     public function words() {
-        return $this->hasMany('words');
+        return $this->hasMany(\App\Word::class);
+    }
+    
+    public function vowelExamples() {
+        return $this->hasMany(\App\VowelExmaple::class);
     }
 }
