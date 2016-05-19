@@ -23,7 +23,7 @@
     <div class="form-group big">
         <span ng-repeat="(i,syllable) in syllables">
                 <span>{{syllable.syllable}}</span>
-                <span>
+                <span ng-controller="VowelSelectionController">
                     <select ng-model="syllables[i].vowel_id">
                         <option ng-repeat="vowel in vowels" value="{{vowel.id}}">{{vowel.vowel}}</option>
                     </select>

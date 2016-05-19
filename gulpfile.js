@@ -23,6 +23,7 @@ elixir(function(mix) {
                 , 'controllers/LoginController.js'
                 , 'controllers/RegisterController.js'
                 , 'controllers/WordEntryController.js'
+                , 'controllers/VowelSelectionController.js'
                 , 'app.js'
                 ], 'public/js/app.js');
     mix.sass([ 'app.scss'

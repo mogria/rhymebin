@@ -13,6 +13,7 @@ angular.module('rhymebin', [
     , 'rhymebin.controllers.LoginController'
     , 'rhymebin.controllers.RegisterController'
     , 'rhymebin.controllers.WordEntryController'
+    , 'rhymebin.controllers.VowelSelectionController'
 ])
 .constant('API', '/api')
 .config([ '$urlRouterProvider'
