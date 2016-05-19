@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "RhymeBin: Running gulp for the first time to compile assets ..."
 gulp
 
