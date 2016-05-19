@@ -8,8 +8,7 @@
         
     <div class="form-group">
         <label for="user">Language</label>
-        <select class="form-control" name="language" ng-model="language">
-            <option ng-repeat="language in availableLanguages" value="{{language.id}}">{{language.name}}</option>
+        <select class="form-control" name="language" ng-model="language" ng-options="language as language.name for language in availableLanguages track by language.id" required>
         </select>
     </div>
     <errors-for field="language"></errors-for>

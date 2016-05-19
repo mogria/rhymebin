@@ -4,21 +4,26 @@
     app.controller('WordEntryController', ['$scope', '$auth', 'Word', 'Language', 'Vowel', function($scope, $auth, Word, Language, Vowel) {
             
         $scope.word = '';
-        $scope.language = 1;
         
         
         $scope.availableLanguages = [];
         
         Language.query(function(languages) {
             $scope.availableLanguages = languages;
+            if($scope.availableLanguages.length > 0) {
+                $scope.language = $scope.availableLanguages[0];
+            }
         });
         
         $scope.syllables = [];
 
         $scope.vowels = [];
 
-        Vowel.query({language_id: 1}, function(vowels) {
-            $scope.vowels = vowels;
+        $scope.$watch("language", function() {
+            if(!$scope.language) return;
+            Vowel.query({'language_id': $scope.language.id}, function(vowels) {
+                $scope.vowels = vowels;
+            });
         });
         
         $scope.updateSyllables = function() {
