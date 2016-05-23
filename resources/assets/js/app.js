@@ -7,6 +7,7 @@ angular.module('rhymebin', [
     , 'rhymebin.services.Language'
     , 'rhymebin.services.Vowel'
     , 'rhymebin.services.authService'
+    , 'rhymebin.services.httpErrorHandlerService'
     , 'rhymebin.controllers.HomeController'
     , 'rhymebin.controllers.NavController'
     , 'rhymebin.controllers.AboutController'
@@ -18,13 +19,16 @@ angular.module('rhymebin', [
 .constant('API', '/api')
 .config([ '$urlRouterProvider'
         , '$authProvider'
+        , '$httpProvider'
         , 'API'
         , function( $urlRouterProvider
                   , $authProvider
+                  , $httpProvider
                   , API) {
                       
     $urlRouterProvider.otherwise("/");
     $authProvider.loginUrl = API + '/login';
     $authProvider.signupUrl = API + '/users';
-        
+
+    $httpProvider.interceptors.push('httpErrorHandlerService');
 }])
