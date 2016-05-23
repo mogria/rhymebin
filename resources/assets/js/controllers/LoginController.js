@@ -1,7 +1,7 @@
 (function() {
-    var app = angular.module('rhymebin.controllers.LoginController', ['ui.router', 'satellizer']);
+    var controllers = angular.module('rhymebin.controllers');
 
-    app.controller('LoginController', ['$scope', 'authService', '$state', '$stateParams', function($scope, authService, $state, $stateParams) {
+    controllers.controller('LoginController', ['$scope', 'authService', '$state', '$stateParams', function($scope, authService, $state, $stateParams) {
         $scope.name = $stateParams.name || '';
         $scope.loginFailure = false;
         $scope.loginSubmit = function() {
@@ -15,7 +15,7 @@
         };
     }]);
 
-    app.config(['$stateProvider', function($stateProvider) {
+    controllers.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('login', {
             'url': '/login:name',
             'views': {

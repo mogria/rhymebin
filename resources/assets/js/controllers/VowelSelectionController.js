@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('rhymebin.controllers.VowelSelectionController', ['ui.router']);
-    app.controller('VowelSelectionController', ['$scope', 'Vowel', function($scope, Vowel) {
+    var controllers = angular.module('rhymebin.controllers');
+    controllers.controller('VowelSelectionController', ['$scope', 'Vowel', function($scope, Vowel) {
     }]);
 })();

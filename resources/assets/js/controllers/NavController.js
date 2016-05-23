@@ -1,7 +1,7 @@
 (function() {
-    var app = angular.module('rhymebin.controllers.NavController', ['ui.router']);
+    var controllers = angular.module('rhymebin.controllers');
 
-    app.controller('NavController', ['$scope', '$rootScope', 'authService', '$state', function($scope, $rootScope, authService, $state) {
+    controllers.controller('NavController', ['$scope', '$rootScope', 'authService', '$state', function($scope, $rootScope, authService, $state) {
         $scope.currentUrl = '/';
         $scope.loggedIn = authService.isAuthenticated();
         

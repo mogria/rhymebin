@@ -1,7 +1,7 @@
 (function() {
-    var app = angular.module('rhymebin.controllers.WordEntryController', ['ui.router']);
+    var controllers = angular.module('rhymebin.controllers');
 
-    app.controller('WordEntryController', ['$scope', '$auth', 'Word', 'Language', 'Vowel', function($scope, $auth, Word, Language, Vowel) {
+    controllers.controller('WordEntryController', ['$scope', '$auth', 'Word', 'Language', 'Vowel', function($scope, $auth, Word, Language, Vowel) {
             
         $scope.word = '';
         
@@ -53,7 +53,7 @@
         };
     }]);
 
-    app.config(['$stateProvider', function($stateProvider) {
+    controllers.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('wordEntry', {
             'url': '/words/new',
             'views': {

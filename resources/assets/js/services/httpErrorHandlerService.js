@@ -1,6 +1,6 @@
 (function() {
-    var app = angular.module('rhymebin.services.httpErrorHandlerService', ['ui.router', 'rhymebin.services.authService']);
-    app.factory('httpErrorHandlerService', ['$q', '$injector', function($q, $injector) {
+    var services = angular.module('rhymebin.services');
+    services.factory('httpErrorHandlerService', ['$q', '$injector', function($q, $injector) {
         var errorHandlers = [{
                 pattern: /Token expired/,
                 recoverable: true,

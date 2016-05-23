@@ -1,10 +1,10 @@
 (function() {
-    var app = angular.module('rhymebin.controllers.AboutController', ['ui.router']);
+    var controllers = angular.module('rhymebin.controllers');
     
-    app.controller('AboutController', ['$scope', function($scope) {
+    controllers.controller('AboutController', ['$scope', function($scope) {
     }]);
     
-    app.config(['$stateProvider', function($stateProvider) {
+    controllers.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('about', { 
             'url': '/about',
             'views': {

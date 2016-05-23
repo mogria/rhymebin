@@ -1,7 +1,7 @@
 (function() {
-    var app = angular.module('rhymebin.controllers.RegisterController', ['ui.router']);
+    var controllers= angular.module('rhymebin.controllers');
 
-    app.controller('RegisterController', ['$scope', '$auth', '$state', function($scope, $auth, $state) {
+    controllers.controller('RegisterController', ['$scope', '$auth', '$state', function($scope, $auth, $state) {
         $scope.errors = [];
         $scope.passwordConfirmed = true;
         
@@ -26,7 +26,7 @@
         };
     }]);
 
-    app.config(['$stateProvider', function($stateProvider) {
+    controllers.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('register', {
             'url': '/register',
             'views': {

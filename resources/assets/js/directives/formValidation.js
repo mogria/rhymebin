@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('rhymebin.directives.formValidation', []);
+    var directives = angular.module('rhymebin.directives');
     
     // add this to a <form> tag.
     // set the $scope.errors variable like this:
@@ -9,7 +9,7 @@
     // }
     //
     // the errorFor directive then displays these errors
-    app.directive('remoteValidate', [
+    directives.directive('remoteValidate', [
         function() {
             return {
                 link: function(scope, element, attr) {
@@ -45,7 +45,7 @@
     ])
     
     // html element to display errors for a field
-    app.directive('errorsFor', [
+    directives.directive('errorsFor', [
         function() {
             return {
                 restrict: 'E',

@@ -1,6 +1,6 @@
 (function(){
-    var app = angular.module('rhymebin.services.authService', ['ngResource']);
-    app.factory('authService', ['$auth', '$q', 'API', '$http', function($auth, $q, API, $http) {
+    var services = angular.module('rhymebin.services');
+    services.factory('authService', ['$auth', '$q', 'API', '$http', function($auth, $q, API, $http) {
         return {
             refreshInterval: -1,
             login: function(name, password) {
