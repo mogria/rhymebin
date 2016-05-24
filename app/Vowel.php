@@ -4,6 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+/*
++-------+------------------+------+-----+---------+----------------+
+| Field | Type             | Null | Key | Default | Extra          |
++-------+------------------+------+-----+---------+----------------+
+| id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| vowel | varchar(255)     | NO   |     | NULL    |                |
++-------+------------------+------+-----+---------+----------------+
+*/
 class Vowel extends Model 
 {
 

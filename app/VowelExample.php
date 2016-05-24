@@ -3,6 +3,17 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
+/*
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| vowel_id    | int(10) unsigned | NO   | MUL | NULL    |                |
+| language_id | int(10) unsigned | NO   | MUL | NULL    |                |
+| word        | varchar(255)     | NO   |     | NULL    |                |
++-------------+------------------+------+-----+---------+----------------+
+*/
+
 class VowelExample extends Model {
     public $timestamps = false;
     

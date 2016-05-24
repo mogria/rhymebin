@@ -4,10 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+/*
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| language_id | int(10) unsigned | NO   | MUL | NULL    |                |
+| created_at  | timestamp        | YES  |     | NULL    |                |
+| updated_at  | timestamp        | YES  |     | NULL    |                |
+| word        | varchar(255)     | NO   |     | NULL    |                |
++-------------+------------------+------+-----+---------+----------------+
+*/
 class Word extends Model 
 {
 
     protected $fillable = [
+        'word',
+        'language_id'
     ];
     
     /**
@@ -22,10 +36,10 @@ class Word extends Model
     }
     
     public function language() {
-        return $this->belongsTo(App\Language::class);
+        return $this->belongsTo(\App\Language::class);
     }
     
     public function syllables() {
-        return $this->hasManyThough(App\Syllable::class, App\SyllableMapping::class);
+        return $this->hasManyThrough(\App\Syllable::class, \App\SyllableMapping::class);
     }
 }
