@@ -22,9 +22,9 @@
     
     <div class="form-group big">
         <span ng-repeat="(i,syllable) in syllables">
-                <span>{{syllable.syllable}}</span>
+                <input type="text" ng-model="syllable.syllable" readonly />
                 <span ng-controller="VowelSelectionController">
-                    <select ng-model="syllables[i].vowel_id">
+                    <select ng-model="syllables[i].vowel_id" name="vowels[]">
                         <option ng-repeat="vowel in vowels" value="{{vowel.id}}">{{vowel.vowel}}</option>
                     </select>
                 </span>

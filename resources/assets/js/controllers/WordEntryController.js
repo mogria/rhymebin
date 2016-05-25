@@ -49,6 +49,9 @@
         }
         
         $scope.wordSubmit = function() {
+            var word = new Word({'syllables': $scope.syllables, 'language_id': $scope.language.id});
+            word.$save({'language_id': $scope.language.id});
+            console.log(word);
             return false;
         };
     }]);

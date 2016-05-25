@@ -19,11 +19,8 @@
         ];
 
         var getErrorHandler = function(rejection) {
-            console.log(rejection);
             for(index in errorHandlers) {
-                
                 if(!rejection.data || !rejection.data.error) continue;
-                console.log(index);
                 var errorHandler = errorHandlers[index];
                 if(errorHandler.pattern.test(rejection.data.error)) {
                     return errorHandler;

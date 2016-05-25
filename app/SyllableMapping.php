@@ -22,4 +22,12 @@ class SyllableMapping extends Model  {
     protected $fillable = [
         'syllable_number'
     ];
+
+    public function syllable() {
+        return $this->belongsTo(\App\Syllable::class);
+    }
+
+    public function word() {
+        return $this->belongsTo(\App\Word::class);
+    }
 }
