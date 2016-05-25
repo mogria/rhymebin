@@ -36,7 +36,7 @@ class MoveVowelIdToSyllableMapping extends Migration
         });
 
         Schema::table('syllable_mappings', function(Blueprint $table) {
-            $table->dropForeign('syllables_vowel_id_foreign');
+            $table->dropForeign('syllable_mappings_vowel_id_foreign');
             $table->dropColumn('vowel_id');
         });
     }
