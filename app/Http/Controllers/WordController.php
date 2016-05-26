@@ -10,14 +10,36 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class WordController extends Controller {
-    public function getWords($language_id) {
-        return Language::findOrFail($language_id)->words;
+    private function convertSyllableWithMapping(Syllable $syllable, SyllableMapping $syllableMapping, $language_id) {
+        return [
+            'id' => $syllable->id,
+            'syllable_number' => $syllableMapping->syllable_number,
+            'syllable' => $syllable->syllable,
+            'vowel' => $this->convertVowel($syllableMapping->vowel, $language_id)
+
+        ];
     }
+    private function convertWord($word, $language_id) {
+        return [
+            'id' => $word->id,
+            'language_id' => $word->language->id,
+            'word' => $word->word,
+            'syllable_count' => $word->syllable_count,
+            'syllables' => $word->syllableMappings()->get()->map(function($syllableMapping) use ($language_id) {
+                return $this->convertSyllableWithMapping($syllableMapping->syllable, $syllableMapping, $language_id);
+            })
+        ];
+    }
+
+    public function getWords($language_id) {
+        return Language::findOrFail($language_id)->words()->get()->map(function($word) use ($language_id) {
+            return $this->convertWord($word, $language_id);
+        });
+    }
+
     
     public function getWord($language_id, $word_id) {
-        // the language_id is not required, because the $word id is already 
-        // unique
-        return Word::findOrFail($word_id);
+        return $this->convertWord(Word::findOrFail($word_id), $language_id);
     }
     
     public function postWords($language_id, Request $request) {
@@ -67,12 +89,12 @@ class WordController extends Controller {
         foreach($syllables as $index => $submittedSyllable) {
             $syllable = Syllable::firstOrCreate(['syllable' => $submittedSyllable['syllable']]);
             $syllableMapping = new SyllableMapping(['syllable_number' => $index + 1]);
-            $syllableMapping->word = $word;
-            $syllableMapping->syllable = $syllable;
-            $syllable = new Syllable($submittedSyllable);
-            $syllable->save();
+            $syllableMapping->word_id = $word->id;
+            $syllableMapping->syllable_id = $syllable->id;
+            $syllableMapping->vowel_id = $submittedSyllable['vowel_id'];
+            $syllableMapping->save();
         }
-        return ['success' => 1, 'created_word' => $word];
+        return ['success' => 1, 'created_word' => $this->convertWord($word)];
     }
     
     public function getWordRhymes($language_id, Request $request) {
