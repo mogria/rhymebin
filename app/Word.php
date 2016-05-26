@@ -23,6 +23,10 @@ class Word extends Model
         'word',
         'language_id'
     ];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
     
     /**
      * Scope a query to only include popular users.
@@ -39,7 +43,12 @@ class Word extends Model
         return $this->belongsTo(\App\Language::class);
     }
     
+
+    public function syllableMappings() {
+        return $this->hasMany(\App\SyllableMapping::class);
+    }
+
     public function syllables() {
-        return $this->hasManyThrough(\App\Syllable::class, \App\SyllableMapping::class);
+        return $this->belongsToMany(\App\Syllable::class, 'syllable_mappings');
     }
 }

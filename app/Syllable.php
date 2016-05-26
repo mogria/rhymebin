@@ -22,11 +22,11 @@ class Syllable extends Model
         'syllable'
     ];
     
-    public function vowel() {
-        return $this->belongsTo(\App\Vowel::class);
+    public function vowels() {
+        return $this->belongsToMany(\App\Vowel::class, 'syllable_mappings');
     }
     
     public function words() {
-        return $this->hasManyThrough(\App\Word::class, \App\SyllableMapping::class);
+        return $this->belongsToMany(\App\Word::class, 'syllable_mappings');
     }
 }

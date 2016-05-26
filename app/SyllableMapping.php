@@ -30,4 +30,8 @@ class SyllableMapping extends Model  {
     public function word() {
         return $this->belongsTo(\App\Word::class);
     }
+
+    public function vowel() {
+        return $this->belongsTo(\App\Vowel::class);
+    }
 }
