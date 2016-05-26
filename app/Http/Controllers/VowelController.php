@@ -16,14 +16,4 @@ class VowelController extends Controller {
         return $this->convertVowel($vowel, $language_id);
 
     }
-    
-    public function convertVowel($vowel, $language_id) {
-        return [
-            'id' => $vowel->id,
-            'vowel' => $vowel->vowel,
-            'examples' => $vowel->vowelExamples()->ofLanguage($language_id)->get()->map(function($example) {
-                return $example->word;
-            })
-        ];
-    }
 }
