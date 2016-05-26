@@ -15,6 +15,7 @@ $app->get('/', function() {
     return view('index');
 });
 
+// api witch authentication
 $app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App\Http\Controllers'], function() use ($app) {
     $app->get('/', function () use ($app) { 
         return $app->version();
@@ -23,10 +24,8 @@ $app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App
     $app->get('/users', 'UserController@getUsers');
     $app->get('/users/{id}', 'UserController@getUser');
     
-    $app->get('/languages', 'LanguageController@getLanguages');
     $app->get('/languages/{id}', 'LanguageController@getLanguage');
     
-    $app->get('/languages/{language_id}/words', 'WordController@getWords');
     $app->get('/languages/{language_id}/words/rhymes', 'WordController@getWordRhymes');
     $app->get('/languages/{language_id}/words/{word_id}', 'WordController@getWords');
     $app->post('/languages/{language_id}/words', 'WordController@postWords');
@@ -36,7 +35,13 @@ $app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App
     $app->get('/languages/{language_id}/vowels/{id}', 'VowelController@getVowel');
 });
 
-$app->post('/api/login', 'SessionController@postLogin');
-$app->post('/api/logout', 'SessionController@postLogout');
-$app->post('/api/refresh', 'SessionController@postRefresh');
-$app->post('/api/users', 'UserController@postUsers');
+// api with no authentication
+$app->group(['prefix' => '/api', 'namespace' => 'App\Http\Controllers'], function() use ($app) {
+    $app->get('/languages', 'LanguageController@getLanguages');
+    $app->get('/languages/{language_id}/words', 'WordController@getWords');
+    $app->post('/login', 'SessionController@postLogin');
+    $app->post('/logout', 'SessionController@postLogout');
+    $app->post('/refresh', 'SessionController@postRefresh');
+    $app->post('/users', 'UserController@postUsers');
+});
+
