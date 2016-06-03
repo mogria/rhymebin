@@ -1,1 +1,32 @@
 @import "vendor/bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.word {
+    .syllable {
+        display: block;
+        float: left;
+
+
+
+        .syllable-content {
+            float: left;
+            .syllable-vowel {
+                text-align: center;
+            }
+
+            .syllable-syllable {
+            }
+        }
+
+        .syllable-splitter {
+            float: left;
+            height: 100%;
+            margin-left: 0.3em;
+            margin-right: 0.3em;
+        }
+    }
+
+    &:last-child {
+        clear:both;
+    }
+}

@@ -18,6 +18,7 @@
         <ul class="nav navbar-nav" ui-view="nav">
             <li ng-class="{active: currentUrl === '/'}"><a href="#/">Home</a></li>
             <li ng-class="{active: currentUrl === '/about'}"><a href="#/about">About</a></li>
+            <li ng-class="{active: currentUrl === '/words'}"><a href="#/words">Words</a></li>
             
             <!-- show when user is logged in -->
             <li ng-class="{active: currentUrl === '/words/new'}" ng-show="loggedIn"><a href="#/words/new">Add Words</a></li>

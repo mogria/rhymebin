@@ -1,0 +1,24 @@
+<h1>Words</h1>
+<form novalidate>
+    <div class="form-group">
+        <label for="user">Language</label>
+        <select class="form-control" name="language" ng-model="language" ng-options="language as language.name for language in availableLanguages track by language.id" required>
+        </select>
+    </div>
+
+    <div class="words">
+        <div ng-repeat="word in words">
+            <!-- <pre>{{word | json}}</pre> -->
+            <div class="word" >
+                <div class="syllable" ng-repeat="syllable in word.syllables">
+                    <div class="syllable-content">
+                        <div class="syllable-syllable">{{syllable.syllable}}</div>
+                        <div class="syllable-vowel">{{syllable.vowel.vowel}}</div>
+                    </div>
+                    <div class="syllable-splitter" ng-show="!$last">|</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
