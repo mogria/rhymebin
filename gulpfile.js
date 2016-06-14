@@ -28,7 +28,7 @@ elixir(function(mix) {
                   , 'controllers/LoginController.js'
                   , 'controllers/RegisterController.js'
                   , 'controllers/WordEntryController.js'
-                  , 'controllers/WordsController.js'
+                  , 'controllers/WordIndexController.js'
                   , 'controllers/VowelSelectionController.js'
                   , 'app.js'
                   ];

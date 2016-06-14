@@ -1,6 +1,6 @@
 (function() {
     var controllers = angular.module('rhymebin.controllers');
-    controllers.controller('WordsController', ['$scope', 'Word', 'Language', 'Vowel', function($scope, Word, Language, Vowel) {
+    controllers.controller('WordIndexController', ['$scope', 'Word', 'Language', 'Vowel', function($scope, Word, Language, Vowel) {
         $scope.availableLanguages = [];
         Language.query(function(languages) {
             $scope.availableLanguages = languages;
@@ -22,8 +22,8 @@
             'url': '/words',
             'views': {
                 'content': {
-                    'controller': 'WordsController',
-                    'templateUrl': 'template-words'
+                    'controller': 'WordIndexController',
+                    'templateUrl': 'template-word-index'
                 }
             }
         })

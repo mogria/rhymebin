@@ -8,8 +8,7 @@
 
     <div class="words">
         <div ng-repeat="word in words">
-            <!-- <pre>{{word | json}}</pre> -->
-            <div class="word" >
+            <div class="word">
                 <div class="syllable" ng-repeat="syllable in word.syllables">
                     <div class="syllable-content">
                         <div class="syllable-syllable">{{syllable.syllable}}</div>
@@ -17,6 +16,10 @@
                     </div>
                     <div class="syllable-splitter" ng-show="!$last">|</div>
                 </div>
+            </div>
+
+            <div class="word-actions">
+                <a href="#/words/{{word.id}}">Show</a>
             </div>
         </div>
     </div>
