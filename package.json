@@ -13,6 +13,7 @@
   "devDependencies": {
     "bower": "^1.7.9",
     "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
     "gulper": "^0.1.2"
   },
   "dependencies": {

@@ -1,0 +1,8 @@
+{
+    "period": 1,
+    "watch": {
+        "public/css/": "*.css",
+        "public/js/": "*.js",
+        "public/img/": "\\.png|gif|jpg$"
+    }
+}

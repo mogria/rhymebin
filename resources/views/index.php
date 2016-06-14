@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="css/app.css" type="text/css" />
         
         <script src="js/app.js" type="text/javascript"></script>
+        <?php if(env("APP_ENV") == "local"): ?>
+        <script src="js/livereload.js?host=localhost" type="text/javascript"></script>
+        <?php endif ?>
     </head>
     <body>
         <nav class="navbar navbar-default" ng-controller="NavController" ng-include="'template-nav'">

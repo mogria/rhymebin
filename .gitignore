@@ -1,10 +1,10 @@
 /vendor
 .env
-/nbproject/private/
-node_modules/
-public/js
-public/css
-public/build
-nbproject/private
+/nbproject/private
+/node_modules
+/public/js
+/public/css
+/public/build
+/tmp
 *~
 *.sw*
