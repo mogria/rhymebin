@@ -1,5 +1,26 @@
 @import "vendor/bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
+.words {
+    .word-list-item {
+        display: block;
+        border-bottom: 1px solid #BBB;
+        margin-top: 1em;
+        padding-bottom: 0.5em;
+
+        .word {
+            display: block;
+            float: left;
+        }
+
+        .word-actions {
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+    }
+}
 
 .word {
     .syllable {
@@ -12,6 +33,7 @@
             float: left;
             .syllable-vowel {
                 text-align: center;
+                line-height: 0.5em;
             }
 
             .syllable-syllable {
@@ -24,9 +46,7 @@
             margin-left: 0.3em;
             margin-right: 0.3em;
         }
+
     }
 
-    &:last-child {
-        clear:both;
-    }
 }

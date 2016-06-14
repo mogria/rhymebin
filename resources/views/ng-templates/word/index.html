@@ -7,7 +7,7 @@
     </div>
 
     <div class="words">
-        <div ng-repeat="word in words">
+        <div ng-repeat="word in words" class="word-list-item">
             <div class="word">
                 <div class="syllable" ng-repeat="syllable in word.syllables">
                     <div class="syllable-content">
@@ -21,6 +21,8 @@
             <div class="word-actions">
                 <a href="#/words/{{word.id}}">Show</a>
             </div>
+
+            <div class="clear"></div>
         </div>
     </div>
 
