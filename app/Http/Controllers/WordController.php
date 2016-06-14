@@ -94,7 +94,7 @@ class WordController extends Controller {
             $syllableMapping->vowel_id = $submittedSyllable['vowel_id'];
             $syllableMapping->save();
         }
-        return ['success' => 1, 'created_word' => $this->convertWord($word)];
+        return ['success' => 1, 'created_word' => $this->convertWord($word, $language_id)];
     }
     
     public function getWordRhymes($language_id, Request $request) {
