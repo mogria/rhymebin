@@ -24,10 +24,6 @@ $app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App
     $app->get('/users', 'UserController@getUsers');
     $app->get('/users/{id}', 'UserController@getUser');
     
-    $app->get('/languages/{id}', 'LanguageController@getLanguage');
-    
-    $app->get('/languages/{language_id}/words/rhymes', 'WordController@getWordRhymes');
-    $app->get('/languages/{language_id}/words/{word_id}', 'WordController@getWords');
     $app->post('/languages/{language_id}/words', 'WordController@postWords');
     
 
@@ -37,7 +33,11 @@ $app->group(['prefix' => '/api', 'middleware' => 'jwt.auth', 'namespace' => 'App
 
 // api with no authentication
 $app->group(['prefix' => '/api', 'namespace' => 'App\Http\Controllers'], function() use ($app) {
+
     $app->get('/languages', 'LanguageController@getLanguages');
+    $app->get('/languages/{id}', 'LanguageController@getLanguage');
+    $app->get('/languages/{language_id}/words/rhymes', 'WordController@getWordRhymes');
+    $app->get('/languages/{language_id}/words/{word_id}', 'WordController@getWord');
     $app->get('/languages/{language_id}/words', 'WordController@getWords');
     $app->post('/login', 'SessionController@postLogin');
     $app->post('/logout', 'SessionController@postLogout');

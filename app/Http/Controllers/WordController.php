@@ -20,6 +20,7 @@ class WordController extends Controller {
         ];
     }
     private function convertWord($word, $language_id) {
+        return $word;
         return [
             'id' => $word->id,
             'language_id' => $word->language->id,
@@ -39,7 +40,11 @@ class WordController extends Controller {
 
     
     public function getWord($language_id, $word_id) {
-        return $this->convertWord(Word::findOrFail($word_id), $language_id);
+        $word = Word::with('syllableMappings', 'syllableMappings.syllable', 'syllableMappings.vowel')->where(['id' => $word_id, 'language_id' => $language_id])->first();
+        if($word == null) {
+            throw new \Illuminate\Database\ModelNotFoundException();
+        }
+        return $this->convertWord($word, $language_id);
     }
     
     public function postWords($language_id, Request $request) {
