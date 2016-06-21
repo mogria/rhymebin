@@ -7,14 +7,18 @@ use App\Vowel;
 
 class Controller extends BaseController
 {
-    protected function convertVowel(Vowel $vowel, $language_id) {
-        return [
+    protected function convertVowel(Vowel $vowel, $language_id, $with_examples = false) {
+        $data = [
             'id' => $vowel->id,
             'vowel' => $vowel->vowel,
-            'examples' => $vowel->vowelExamples()->ofLanguage($language_id)->get()->map(function($example) {
-                return $example->word;
-            })
         ];
+        if($with_examples) {
+            $vowelExamples = $vowel->vowelExamples()->ofLanguage($language_id)->get();
+            $data['examples'] = $vowelExamples->map(function($example) {
+                return $example->word;
+            });
+        }
+        return $data;
     }
     
 }

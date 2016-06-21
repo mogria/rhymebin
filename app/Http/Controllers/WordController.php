@@ -10,24 +10,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class WordController extends Controller {
-    private function convertSyllableWithMapping(Syllable $syllable, SyllableMapping $syllableMapping, $language_id) {
+    private function convertSyllableWithMapping(Syllable $syllable, SyllableMapping $syllableMapping, $language_id, $with_examples = false) {
         return [
             'id' => $syllable->id,
             'syllable_number' => $syllableMapping->syllable_number,
             'syllable' => $syllable->syllable,
-            'vowel' => $this->convertVowel($syllableMapping->vowel, $language_id)
+            'vowel' => $this->convertVowel($syllableMapping->vowel, $language_id, $with_examples)
 
         ];
     }
-    private function convertWord($word, $language_id) {
-        return $word;
+    private function convertWord($word, $language_id, $with_examples = false) {
         return [
             'id' => $word->id,
             'language_id' => $word->language->id,
             'word' => $word->word,
             'syllable_count' => $word->syllable_count,
-            'syllables' => $word->syllableMappings()->get()->map(function($syllableMapping) use ($language_id) {
-                return $this->convertSyllableWithMapping($syllableMapping->syllable, $syllableMapping, $language_id);
+            'syllables' => $word->syllableMappings()->get()->map(function($syllableMapping) use ($language_id, $with_examples) {
+                return $this->convertSyllableWithMapping($syllableMapping->syllable, $syllableMapping, $language_id, $with_examples);
             })
         ];
     }
@@ -44,7 +43,7 @@ class WordController extends Controller {
         if($word == null) {
             throw new \Illuminate\Database\ModelNotFoundException();
         }
-        return $this->convertWord($word, $language_id);
+        return $this->convertWord($word, $language_id, $with_examples = true);
     }
     
     public function postWords($language_id, Request $request) {
