@@ -17,6 +17,7 @@ check_if_program_available() {
 
 check_if_program_available "php"
 check_if_program_available "composer"
+check_if_program_available "node"
 check_if_program_available "npm"
 
 
@@ -26,6 +27,8 @@ composer install
 echo "RhymeBin: Running npm install to grab bower & gulp"
 npm install
 
+# temporarily add bower in submodule to PATH, in case it isn't found
+export PATH="$PATH:./node_modules/bower/bin"
 echo "RhymeBin: Running bower install to grab client side JavaScript libraries"
 bower install
 

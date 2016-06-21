@@ -32,8 +32,7 @@ gulp watch &
 echo $! > tmp/gulp.pid
 
 echo "RhymeBin: Run LiveReload ... "
-pkill reload
-php vendor/rickysu/php-livereload/bin/reload server:run &
+node livereload.js &
 echo $! > tmp/livereload.pid
 
 echo "RhymeBin: Running PHPs own webserver on 127.0.0.1:1337 WEBROOT=public/  ... "
