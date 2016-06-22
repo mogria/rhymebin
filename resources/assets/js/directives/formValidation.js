@@ -67,7 +67,7 @@
                     });
                 },
                 scope: true,
-                templateUrl: 'template-errors-for'
+                templateUrl: 'template-forms-errors-for'
             };
         }
     ]);
