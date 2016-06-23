@@ -7,7 +7,7 @@ use App\Vowel;
 class VowelController extends Controller {
     public function getVowels($language_id) {
         return Vowel::with('vowelExamples')->get()->map(function($vowel) use($language_id) {
-            return $this->convertVowel($vowel, $language_id);
+            return $this->convertVowel($vowel, $language_id, true);
         });
     }
     

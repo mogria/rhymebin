@@ -1,6 +1,12 @@
-<span>
-    <select ng-model="syllable.vowel_id" name="vowels[]">
-        <option ng-repeat="vowel in vowels" value="{{vowel.id}}">{{vowel.vowel}}</option>
-    </select>
-</span>
+<div class="vowel-selection">
+    <input type="button" value="{{selectedVowel.vowel}}" ng-click="selectVowel(syllable)"/>
+    <span class="vowel-with-examples" ng-repeat="vowel in vowels" ng-show="select">
+        <input type="button" nclass="vowel" ng-click="vowelSelected(vowel)" value="{{vowel.vowel}}" />
+        <span class="vowel-examples">
+            <span class="vowel-example" ng-repeat="example in vowel.examples">
+                {{example}}
+            </span>
+        </span>
+    </span>
+</div>
 
