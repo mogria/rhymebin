@@ -52,6 +52,7 @@
             var word = new Word({'syllables': $scope.syllables, 'language_id': $scope.language.id});
             word.$save({'language_id': $scope.language.id}, function() {
                 $scope.word = '';
+                $scope.updateSyllables();
             }, function(response) {
                 $scope.errors = response.data.validationErrors;
             });

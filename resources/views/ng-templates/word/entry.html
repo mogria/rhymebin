@@ -23,11 +23,7 @@
     <div class="form-group big">
         <span ng-repeat="(i,syllable) in syllables">
             <input type="text" ng-model="syllable.syllable" readonly />
-            <span ng-controller="VowelSelectionController">
-                <select ng-model="syllables[i].vowel_id" name="vowels[]">
-                    <option ng-repeat="vowel in vowels" value="{{vowel.id}}">{{vowel.vowel}}</option>
-                </select>
-            </span>
+            <vowel-selection syllable="syllable" vowels="vowels"></vowel-selection>
             <input type="button" ng-if="!$last" class="btn btn-default" ng-click="mergeSyllables(syllable)" value="+" />
         </span>
     </div>
