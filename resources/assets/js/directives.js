@@ -1,3 +1,3 @@
 (function() {
-    var directives = angular.module('rhymebin.directives', ['rhymebin']);
+    var directives = angular.module('rhymebin.directives', ['ngSanitize', 'rhymebin']);
 })();

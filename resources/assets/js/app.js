@@ -1,10 +1,12 @@
 angular.module('rhymebin', [
+    , 'ngSanitize'
     , 'ui.router'
     , 'satellizer'
     , 'ngResource'
     , 'rhymebin.directives'
     , 'rhymebin.services'
     , 'rhymebin.controllers'
+    , 'rhymebin.filters'
 ])
 .constant('API', '/api')
 .config([ '$urlRouterProvider'

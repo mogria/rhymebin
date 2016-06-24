@@ -3,9 +3,7 @@
     <span class="vowel-with-examples" ng-repeat="vowel in vowels" ng-show="select">
         <input type="button" nclass="vowel" ng-click="vowelSelected(vowel)" value="{{vowel.vowel}}" />
         <span class="vowel-examples">
-            <span class="vowel-example" ng-repeat="example in vowel.examples">
-                {{example}}
-            </span>
+            <vowel-example class="vowel-example" ng-repeat="example in vowel.examples" example="example"></vowel-example>
         </span>
     </span>
 </div>
