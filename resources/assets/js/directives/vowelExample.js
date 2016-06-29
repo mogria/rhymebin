@@ -1,6 +1,6 @@
 (function() {
     var directives = angular.module('rhymebin.directives');
-    var directives.directive('vowelExample', ['$sce', function() {
+    directives.directive('vowelExample', ['$sce', function() {
         return {
             restrict: 'E',
             link: function($scope, element, attr) {
@@ -10,6 +10,6 @@
                 example: '=example'
             },
             template: 'template-word-vowel-example'
-        };
-    });
+        }
+    }]);
 })();
