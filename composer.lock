@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "4bf2b86dad41dd2e4fd1b78547b8d1ed",
+    "content-hash": "4b47ed7822f4e2681e8efadf2aef7cb6",
     "packages": [
         {
             "name": "basicit/lumen-vendor-publish",
@@ -874,16 +875,16 @@
         },
         {
             "name": "illuminate/queue",
-            "version": "v5.2.28",
+            "version": "v5.2.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/queue.git",
-                "reference": "4426e6df25facdc603b7e6d999142e78b8255843"
+                "reference": "4e05c2184618e08273e8c159a6345a85bcff7b1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/queue/zipball/4426e6df25facdc603b7e6d999142e78b8255843",
-                "reference": "4426e6df25facdc603b7e6d999142e78b8255843",
+                "url": "https://api.github.com/repos/illuminate/queue/zipball/4e05c2184618e08273e8c159a6345a85bcff7b1a",
+                "reference": "4e05c2184618e08273e8c159a6345a85bcff7b1a",
                 "shasum": ""
             },
             "require": {
@@ -893,6 +894,7 @@
                 "illuminate/support": "5.2.*",
                 "nesbot/carbon": "~1.20",
                 "php": ">=5.5.9",
+                "symfony/debug": "2.8.*|3.0.*",
                 "symfony/process": "2.8.*|3.0.*"
             },
             "suggest": {
@@ -926,7 +928,7 @@
             ],
             "description": "The Illuminate Queue package.",
             "homepage": "http://laravel.com",
-            "time": "2016-03-21 14:59:35"
+            "time": "2016-06-09 01:50:28"
         },
         {
             "name": "illuminate/session",
@@ -1131,16 +1133,16 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v5.2.28",
+            "version": "v5.2.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "a0e77662f06eaae851469ebf132868c9024a259d"
+                "reference": "459795e5ba447d674eae03bfb2f9bc3c6206d424"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/a0e77662f06eaae851469ebf132868c9024a259d",
-                "reference": "a0e77662f06eaae851469ebf132868c9024a259d",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/459795e5ba447d674eae03bfb2f9bc3c6206d424",
+                "reference": "459795e5ba447d674eae03bfb2f9bc3c6206d424",
                 "shasum": ""
             },
             "require": {
@@ -1149,7 +1151,8 @@
                 "illuminate/events": "5.2.*",
                 "illuminate/filesystem": "5.2.*",
                 "illuminate/support": "5.2.*",
-                "php": ">=5.5.9"
+                "php": ">=5.5.9",
+                "symfony/debug": "2.8.*|3.0.*"
             },
             "type": "library",
             "extra": {
@@ -1174,7 +1177,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "http://laravel.com",
-            "time": "2016-03-28 15:19:10"
+            "time": "2016-05-28 21:20:12"
         },
         {
             "name": "laravel/lumen-framework",
@@ -1766,16 +1769,16 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.1.1",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "26786e21ee0344f99629215ead5f0d6f18cdc267"
+                "reference": "e67e1552dd7313df1cf6535cb606751899e0e727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/26786e21ee0344f99629215ead5f0d6f18cdc267",
-                "reference": "26786e21ee0344f99629215ead5f0d6f18cdc267",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/e67e1552dd7313df1cf6535cb606751899e0e727",
+                "reference": "e67e1552dd7313df1cf6535cb606751899e0e727",
                 "shasum": ""
             },
             "require": {
@@ -1792,7 +1795,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -1819,7 +1822,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 15:08:54"
+            "time": "2016-06-06 15:08:35"
         },
         {
             "name": "symfony/event-dispatcher",
