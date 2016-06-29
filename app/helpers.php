@@ -12,6 +12,44 @@ if (!function_exists('config_path')) {
     }
 }
 
+if (!function_exists('public_path')) {
+    /**
+     * Get the path to the public folder.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    function public_path($path = '')
+    {
+        return env('PUBLIC_PATH', base_path('public')).($path ? '/'.$path : $path);
+    }
+}
+
+if (!function_exists('elixir')) {
+    /**
+     * Get the path to a versioned Elixir file.
+     *
+     * @param string $file
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return string
+     */
+    function elixir($file)
+    {
+        static $manifest = null;
+        $buildPath = trim(env('ELIXIR_BUILD_PATH', 'build'), '/'); // Trim start & end slashes.
+        if (is_null($manifest)) {
+            $manifest = json_decode(file_get_contents(public_path($buildPath.'/rev-manifest.json')), true);
+        }
+        if (isset($manifest[$file])) {
+            return '/'.$buildPath.'/'.$manifest[$file];
+        }
+        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
+    }
+}
+
 // this function is from stackoverflow by Gordon:
 // https://stackoverflow.com/questions/2637945/getting-relative-path-from-absolute-path-in-php
 function getRelativePath($from, $to)

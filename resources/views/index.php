@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="stylesheet" href="css/app.css" type="text/css" />
+        <link rel="stylesheet" href="<?= htmlspecialchars(elixir('css/app.css'), ENT_QUOTES); ?>" type="text/css" />
         
-        <script src="js/app.js" type="text/javascript"></script>
+        <script src="<?= htmlspecialchars(elixir('js/app.js'), ENT_QUOTES); ?>" type="text/javascript"></script>
         <?php if(env("APP_ENV") == "local"): ?>
         <script src="js/livereload.js?host=localhost" type="text/javascript"></script>
         <?php endif ?>

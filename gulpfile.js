@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     util = require('gulp-util'),
-    elixir = require('laravel-elixir'),
-    spawn = require('child_process').spawn;
+    elixir = require('laravel-elixir');
 
 elixir.config.sourcemaps = true;
 
@@ -47,4 +46,6 @@ elixir(function(mix) {
     }
     mix.sass([ 'app.scss'
              ], 'public/css/app.css');
+
+    mix.version(['public/css/app.css', 'public/js/app.js']);
 });
