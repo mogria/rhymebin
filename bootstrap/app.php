@@ -61,9 +61,9 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    App\Http\Middleware\SecurityHeaders::class
+]);
 
 /* $app->routeMiddleware([
     //'jwt.auth'    => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
