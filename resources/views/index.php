@@ -1,5 +1,13 @@
 <!doctype html>
 <html ng-app="rhymebin"><!-- git de güszl bi: https://github.com/mogria/rhymebin -->
+    <!--
+     ____  _     _   _           _   _ ____  _
+    |  _ \| |__ (_) (_)_ __ ___ (_)_(_) __ )(_)_ __
+    | |_) | '_ \| | | | '_ ` _ \ / _ \|  _ \| | '_ \
+    |  _ <| | | | |_| | | | | | |  __/| |_) | | | | |
+    |_| \_\_| |_|\__, |_| |_| |_|\___||____/|_|_| |_|
+                 |___/ by mogria
+    -->
     <head>
         <title>RhymeBin</title>
         
@@ -46,3 +54,4 @@
 
     </body>
 </html>
+
