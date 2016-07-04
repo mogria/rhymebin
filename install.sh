@@ -3,7 +3,16 @@
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "$SOURCE_DIR"
+cat <<'INTRO'
+ ____  _     _   _           _   _ ____  _
+|  _ \| |__ (_) (_)_ __ ___ (_)_(_) __ )(_)_ __
+| |_) | '_ \| | | | '_ ` _ \ / _ \|  _ \| | '_ \
+|  _ <| | | | |_| | | | | | |  __/| |_) | | | | |
+|_| \_\_| |_|\__, |_| |_| |_|\___||____/|_|_| |_|
+             |___/ Installer, by mogria for güssl
 
+INTRO
+ 
 check_if_program_available() {
     echo -n "RhymeBin: checking if $1 is available "
     "$1" --version &> /dev/null
@@ -39,3 +48,4 @@ fi
 
 echo "RhymeBin: Seeding the database with php artisan db:seed"
 php artisan db:seed
+

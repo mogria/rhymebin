@@ -91,7 +91,8 @@ function angularTemplate($path) {
     $id = 'id="template-' . htmlspecialchars($id_slug) . '"';
     $type = 'type="text/ng-template"';
     $renderedView = view('ng-templates/' . $path);
-    return "<script $type $id>\n" . $renderedView . "\n</script>";
+    $renderedView = trim(str_replace("\n", "\n    ", $renderedView)); // for indenting
+    return "<script $type $id>\n    " . $renderedView . "\n</script>";
 }
 
 function allAngularTemplates() {
@@ -114,5 +115,5 @@ function allAngularTemplates() {
 
     // sort the files so they come out deterministically (and not based on and inode number or something like that)
     sort($templateNames, SORT_STRING);
-    return "\n" . join("\n", array_map('angularTemplate', $templateNames));
+    return "\n" . join("\n\n", array_map('angularTemplate', $templateNames)) . "\n";
 }
