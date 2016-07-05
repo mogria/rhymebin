@@ -26,28 +26,16 @@ if (!function_exists('public_path')) {
     }
 }
 
-if (!function_exists('elixir')) {
-    /**
-     * Get the path to a versioned Elixir file.
-     *
-     * @param string $file
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return string
-     */
-    function elixir($file)
-    {
-        static $manifest = null;
-        $buildPath = trim(env('ELIXIR_BUILD_PATH', 'build'), '/'); // Trim start & end slashes.
-        if (is_null($manifest)) {
-            $manifest = json_decode(file_get_contents(public_path($buildPath.'/rev-manifest.json')), true);
+function cache_bust() {
+    static $slug =  null;
+    if($slug === null) {
+        $file = public_path('version');
+        $slug = "?bust-cache=";
+        if(file_exists($file)) {
+            $slug .= urlencode(file_get_contents($file));
         }
-        if (isset($manifest[$file])) {
-            return '/'.$buildPath.'/'.$manifest[$file];
-        }
-        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
+    return $slug;
 }
 
 // this function is from stackoverflow by Gordon:
