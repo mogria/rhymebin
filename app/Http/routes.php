@@ -12,7 +12,10 @@
 */
 
 $app->get('/', function() {
-    return view('index');
+    if(env('APP_ENV', '') === 'production') {
+        return file_get_contents(public_path('spa.html'));
+    }
+    return view('index'); 
 });
 
 // api witch authentication

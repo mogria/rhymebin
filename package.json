@@ -16,6 +16,10 @@
   "dependencies": {
     "bower": "^1.7.9",
     "gulp": "^3.9.1",
+    "gulp-file": "^0.3.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-purifycss": "^0.2.0",
+    "gulp-replace": "^0.5.4",
     "gulp-util": "^3.0.7",
     "laravel-elixir": "^6.0.0-1"
   }

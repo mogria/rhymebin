@@ -5,6 +5,8 @@
 /public/js
 /public/css
 /public/build
+/public/spa.html
+/public/version
 /tmp
 *~
 *.sw*
