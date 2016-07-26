@@ -48,5 +48,49 @@
         }
 
     }
+}
 
+.syllable-entry {
+    display: block;
+    float: left;
+
+    .syllable-container {
+        display: block;
+        float: left;
+
+        .syllable-display {
+            display: block;
+            text-align: center;
+        }
+
+        .vowel-selection {
+            & > .btn {
+                display: block;
+                margin: auto;
+            }
+            .vowel-container {
+                background: white;
+                padding: $padding-base-vertical;
+                border-color: #ddd;
+                border-width: 1px;
+                border-style: solid;
+                border-radius: 5px;
+                position: absolute;
+                @border-top-radius($border-radius-base);
+                @border-bottom-radius($border-radius-base);
+
+                .vowel-with-examples {
+                    display: block;
+                    margin-top: $padding-base-vertical;
+                }
+            }
+        }
+    }
+
+    .syllable-merger-button {
+        display: block;
+        float: left;
+        margin-left: 0.3em;
+        margin-right: 0.3em;
+    }
 }
