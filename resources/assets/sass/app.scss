@@ -78,10 +78,13 @@
                 position: absolute;
                 @border-top-radius($border-radius-base);
                 @border-bottom-radius($border-radius-base);
+                width: 420px;
 
                 .vowel-with-examples {
                     display: block;
                     margin-top: $padding-base-vertical;
+                    width: 200px;
+                    float: left;
                 }
             }
         }
