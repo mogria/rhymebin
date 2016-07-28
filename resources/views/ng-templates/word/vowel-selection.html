@@ -1,10 +1,13 @@
 <div class="vowel-selection">
-    <input type="button" value="{{selectedVowel.vowel}}" ng-click="selectVowel(syllable)"/>
-    <span class="vowel-with-examples" ng-repeat="vowel in vowels" ng-show="select">
-        <input type="button" nclass="vowel" ng-click="vowelSelected(vowel)" value="{{vowel.vowel}}" />
-        <span class="vowel-examples">
-            <vowel-example class="vowel-example" ng-repeat="example in vowel.examples" example="example"></vowel-example>
-        </span>
-    </span>
+    <input type="button" value="{{selectedVowel.vowel}}" ng-click="selectVowel(syllable)" class="btn btn-default"/>
+    <div class="vowel-container" ng-show="select">
+        <div class="vowel-with-examples" ng-repeat="vowel in vowels">
+            <input type="button" nclass="vowel" ng-click="vowelSelected(vowel)" value="{{vowel.vowel}}" class="btn btn-default" />
+            <span class="vowel-examples" ng-repeat="example in vowel.examples">
+                <vowel-example class="vowel-example" example="example"></vowel-example>
+                <span ng-show="!$last">,</span>
+            </span>
+        </div>
+    </div>
 </div>
 

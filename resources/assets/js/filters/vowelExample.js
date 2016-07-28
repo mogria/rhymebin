@@ -1,8 +1,8 @@
 (function() {
     var filters = angular.module('rhymebin.filters');
-    filters.filter('vowelExample', [function() {
+    filters.filter('vowelExample', ['$sce', function($sce) {
         return function(input) {
-            return input.replace(/\*([^\*]+)\*/, '<strong>$1</strong>');
+            return $sce.trustAsHtml(input.replace(/\*([^\*]+)\*/, '<strong>$1</strong>'));
         };
     }]);
 })();

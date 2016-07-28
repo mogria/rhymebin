@@ -39,7 +39,6 @@
                         }
                         resetSelectedVowel();
                     }
-                    console.log($scope);
                 },
                 templateUrl: 'template-word-vowel-selection'
             };

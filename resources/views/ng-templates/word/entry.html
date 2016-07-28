@@ -21,11 +21,13 @@
     <errors-for field="word"></errors-for>
     
     <div class="form-group big">
-        <span ng-repeat="(i,syllable) in syllables">
-            <input type="text" ng-model="syllable.syllable" readonly />
-            <vowel-selection syllable="syllable" vowels="vowels"></vowel-selection>
-            <input type="button" ng-if="!$last" class="btn btn-default" ng-click="mergeSyllables(syllable)" value="+" />
-        </span>
+        <div ng-repeat="(i,syllable) in syllables" class="syllable-entry">
+            <div class="syllable-container">
+                <span class="syllable-display">{{syllable.syllable}}</span>
+                <vowel-selection syllable="syllable" vowels="vowels"></vowel-selection>
+            </div>
+            <input type="button" ng-if="!$last" class="btn btn-default syllable-merger-button" ng-click="mergeSyllables(syllable)" value="+" />
+        </div>
     </div>
 
     
