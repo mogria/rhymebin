@@ -13,7 +13,11 @@
 
 $app->get('/', function() {
     if(env('APP_ENV', '') === 'production') {
-        return file_get_contents(public_path('spa.html'));
+        ob_start();
+        echo file_get_contents(public_path('spa.html'));
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     }
     return view('index'); 
 });

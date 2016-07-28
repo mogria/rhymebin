@@ -17,7 +17,7 @@ fi
 # Make sure process spawned by this script get killed again
 # so they don't keep the bind() on a port
 kill_tasks() {
-    for f in gulp php-httpd livereload; do
+    for f in gulp; do
         file="tmp/${f}.pid"
         if [ -f "$file" ]; then
             pid="$(cat "$file")"
@@ -37,23 +37,18 @@ kill_tasks
 
 echo "RhymeBin: killing previous processes, if they are still running"
 
-echo "RhymeBin: Running gulp for the first time to compile assets ..."
+echo "RhymeBin: Running gulp watch with live-reload ... "
 GULP=gulp
 gulp -v 2>&1 /dev/null
 if [ "$?" -ne 0 ]; then
     GULP="node ./node_modules/gulp/bin/gulp.js"
 fi
-$GULP
 
-echo "RhymeBin: Running gulp watch ... "
+echo "$GULP"
 $GULP watch &
+
 # save PID for gulp watch to kill it later
 echo $! > tmp/gulp.pid
-
-echo "RhymeBin: Run LiveReload ... "
-node livereload.js &
-# save PID for livereload to kill it later
-echo $! > tmp/livereload.pid
 
 echo "RhymeBin: Running PHPs own webserver on 127.0.0.1:1337 WEBROOT=public/  ... "
 php -S 127.0.0.1:1337 -t "$(dirname "${BASH_SOURCE[0]}")/public"
