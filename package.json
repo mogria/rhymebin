@@ -2,6 +2,7 @@
   "name": "rhymebin",
   "version": "0.1.0",
   "description": "A website for finding rhymes",
+  "repository": "https://github.com/mogria/rhymebin.git",
   "directories": {
     "test": "tests"
   },
