@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4bf2b86dad41dd2e4fd1b78547b8d1ed",
-    "content-hash": "4b47ed7822f4e2681e8efadf2aef7cb6",
+    "hash": "c4292103d7205a19fc396cf1282df79e",
+    "content-hash": "2b74481d637d79bb2b1df3033481d5c5",
     "packages": [
         {
             "name": "basicit/lumen-vendor-publish",
@@ -1350,6 +1350,44 @@
             "time": "2016-08-10 08:55:11"
         },
         {
+            "name": "mlntn/lumen-artisan-route-list",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mlntn/lumen-artisan-route-list.git",
+                "reference": "fc5f4197b59c7b45f1af4ef186857c4fc4472023"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mlntn/lumen-artisan-route-list/zipball/fc5f4197b59c7b45f1af4ef186857c4fc4472023",
+                "reference": "fc5f4197b59c7b45f1af4ef186857c4fc4472023",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jared Mellentine",
+                    "email": "jared@mellentine.com"
+                }
+            ],
+            "description": "artisan route:list for Lumen projects",
+            "homepage": "http://github.com/mlntn/lumen-artisan-route-list",
+            "keywords": [
+                "artisan",
+                "lumen"
+            ],
+            "time": "2016-02-29 17:15:56"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.21.0",
             "source": {
@@ -1580,6 +1618,48 @@
                 "time"
             ],
             "time": "2015-11-04 20:07:17"
+        },
+        {
+            "name": "niellles/lumen-commands",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Niellles/lumen-commands.git",
+                "reference": "a98d1d41ef5a60c78e7c6c2f7ce5b6aa161e4327"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Niellles/lumen-commands/zipball/a98d1d41ef5a60c78e7c6c2f7ce5b6aa161e4327",
+                "reference": "a98d1d41ef5a60c78e7c6c2f7ce5b6aa161e4327",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/lumen-framework": "5.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Niellles\\LumenCommands\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Niels van der Galiën"
+                }
+            ],
+            "description": "Adds artisan commands to Lumen (5.2) that aren't available by default. make: command, controller, exception, job, middleware, model and seed.",
+            "keywords": [
+                "Lumen 5.2",
+                "artisan",
+                "commands",
+                "lumen",
+                "make"
+            ],
+            "time": "2016-02-15 17:39:43"
         },
         {
             "name": "nikic/fast-route",
@@ -2570,86 +2650,6 @@
                 "fixtures"
             ],
             "time": "2016-04-29 12:21:54"
-        },
-        {
-            "name": "mlntn/lumen-artisan-route-list",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mlntn/lumen-artisan-route-list.git",
-                "reference": "fc5f4197b59c7b45f1af4ef186857c4fc4472023"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mlntn/lumen-artisan-route-list/zipball/fc5f4197b59c7b45f1af4ef186857c4fc4472023",
-                "reference": "fc5f4197b59c7b45f1af4ef186857c4fc4472023",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jared Mellentine",
-                    "email": "jared@mellentine.com"
-                }
-            ],
-            "description": "artisan route:list for Lumen projects",
-            "homepage": "http://github.com/mlntn/lumen-artisan-route-list",
-            "keywords": [
-                "artisan",
-                "lumen"
-            ],
-            "time": "2016-02-29 17:15:56"
-        },
-        {
-            "name": "niellles/lumen-commands",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Niellles/lumen-commands.git",
-                "reference": "a98d1d41ef5a60c78e7c6c2f7ce5b6aa161e4327"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Niellles/lumen-commands/zipball/a98d1d41ef5a60c78e7c6c2f7ce5b6aa161e4327",
-                "reference": "a98d1d41ef5a60c78e7c6c2f7ce5b6aa161e4327",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/lumen-framework": "5.2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Niellles\\LumenCommands\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Niels van der Galiën"
-                }
-            ],
-            "description": "Adds artisan commands to Lumen (5.2) that aren't available by default. make: command, controller, exception, job, middleware, model and seed.",
-            "keywords": [
-                "Lumen 5.2",
-                "artisan",
-                "commands",
-                "lumen",
-                "make"
-            ],
-            "time": "2016-02-15 17:39:43"
         },
         {
             "name": "phpdocumentor/reflection-common",
