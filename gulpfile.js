@@ -168,7 +168,7 @@ gulp.task('gen-version', function() {
 
 // Compiles the whole application into a single .html file
 // When lumen is configured to be in production, it serves the file when requesting GET /
-gulp.task('onepage', ['js-minify', 'css-purify'], function(done) {
+gulp.task('onepage', ['js-minify', 'css-minify'], function(done) {
     var phpCode = "$_SERVER[\"REQUEST_METHOD\"]=\"GET\";\n$_SERVER[\"REQUEST_URI\"]=\"/\";\n$a=require(\"bootstrap/app.php\");\n$a->run();";
     execFile('php', ['-r', phpCode], {
         maxBuffer: 4 * 1024 * 1024 /* 4MB */,

@@ -33,17 +33,20 @@ env('bin/gulp', function() {
 });
 
 task('npm:install', function() {
-  $output = run('cd {{deploy_path}}/current && {{bin/npm}} install --production');
+  cd('{{release_path}}');
+  $output = run('{{bin/npm}} install --production');
   writeln('<info>' . $output . '</info>');
 })->desc('Install npm dependencies');
 
 task('bower:install', function() {
-  $output = run('cd {{deploy_path}}/current && {{bin/bower}} install --production');
+  cd('{{release_path}}');
+  $output = run('{{bin/bower}} install --production');
   writeln('<info>' . $output . '</info>');
 })->desc('Install bower dependencies');
 
 task('gulp:all', function() {
-  $output = run('cd {{deploy_path}}/current && {{bin/gulp}} --production');
+  cd('{{release_path}}');
+  $output = run('{{bin/gulp}} --production');
   writeln('<info>' . $output . '</info>');
 })->desc('Run all gulp tasks');
 
