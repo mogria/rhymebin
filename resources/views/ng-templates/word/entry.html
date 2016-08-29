@@ -15,7 +15,7 @@
         <div ng-repeat="(i,syllable) in entryData.syllables" class="syllable-entry">
             <div class="syllable-container">
                 <span class="syllable-display">{{syllable.syllable}}</span>
-                <vowel-selection syllable="syllable" vowels="entryData.vowels"></vowel-selection>
+                <vowel-selection syllable="syllable" vowels="helperData.vowels"></vowel-selection>
             </div>
             <input type="button" ng-if="!$last" class="btn btn-default syllable-merger-button" ng-click="mergeSyllables(syllable)" value="+" />
         </div>

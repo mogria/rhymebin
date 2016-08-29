@@ -9,25 +9,22 @@
         };
 
         $scope.helperData = {
-            vowels: [],
-            availableLanguages: LanguageService.availableLanguages()
+            vowels: []
         }
+        Vowel.query({'language_id': LanguageService.selectedLanguage().id}, function(vowels) {
+            $scope.helperData.vowels = vowels;
+        })
 
-        $scope.$watch("language", function() {
-            if(!$scope.language) return;
-            selectLanguage($scope.language);
-        });
-        
         $scope.updateSyllables = function() {
-            var syllables = $scope.word.split("");
-            $scope.syllables = syllables.map(function(letter, i) {
+            var syllables = $scope.entryData.word.split("");
+            $scope.entryData.syllables = syllables.map(function(letter, i) {
                 return { 'syllable': letter, 'start_index': i, 'end_index': i + 1, 'vowel_id': 1 }
             });
             
         }
 
         $scope.mergeSyllables = function(firstSyllable) {
-            var syllables = $scope.syllables;
+            var syllables = $scope.entryData.syllables;
             var index = syllables.indexOf(firstSyllable);
             if(index == -1) return;
             var secondSyllable = syllables[index + 1];
@@ -36,19 +33,19 @@
             firstSyllable.end_index = secondSyllable.end_index;
             // remove the second syllable object
             syllables.splice(index + 1, 1);
-            $scope.syllables = syllables;
+            $scope.entryData.syllables = syllables;
             return false;
         }
         
         $scope.wordSubmit = function() {
-            var word = new Word({'syllables': $scope.syllables, 'language_id': $scope.language.id});
-            word.$save({'language_id': $scope.language.id}, function() {
-                $scope.word = '';
+            var language = LanguageService.selectedLanguage();
+            var word = new Word({'syllables': $scope.entryData.syllables, 'language_id': language.id});
+            word.$save({'language_id': language.id}, function() {
+                $scope.entryData.word = '';
                 $scope.updateSyllables();
             }, function(response) {
                 $scope.errors = response.data.validationErrors;
             });
-            console.log(word);
             return false;
         };
     }]);

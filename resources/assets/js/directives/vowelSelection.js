@@ -4,6 +4,10 @@
     directives.directive('vowelSelection', [function() {
             return {
                 restrict: 'E',
+                scope: {
+                    vowels: '=vowels',
+                    syllable: '=syllable'
+                },
                 link: function($scope, element, attr) {
                     var getVowelById = function (id) {
                         return $scope.vowels.find(function(vowel) {
