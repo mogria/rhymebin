@@ -1,20 +1,13 @@
 (function() {
     var controllers = angular.module('rhymebin.controllers');
-    controllers.controller('WordIndexController', ['$scope', 'Word', 'Language', 'Vowel', function($scope, Word, Language, Vowel) {
-        $scope.availableLanguages = [];
-        Language.query(function(languages) {
-            $scope.availableLanguages = languages;
-            if($scope.availableLanguages.length > 0) {
-                $scope.language = $scope.availableLanguages[0];
-            }
-        });
-
-        $scope.$watch("language", function() {
-            if(!$scope.language) return;
-            Word.query({'language_id': $scope.language.id}, function(words) {
+    controllers.controller('WordIndexController', ['$scope', 'LanguageService', 'Word', function($scope, LanguageService, Word) {
+        var loadWords = function(language) {
+            Word.query({'language_id': language.id}, function(words) {
                 $scope.words = words;
             });
-        });
+        };
+        LanguageService.addLanguageChangedHandler(loadWords);
+        loadWords(LanguageService.selectedLanguage());
     }]);
 
     controllers.config(['$stateProvider', function($stateProvider) {

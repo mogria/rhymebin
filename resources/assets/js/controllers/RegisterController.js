@@ -1,5 +1,5 @@
 (function() {
-    var controllers= angular.module('rhymebin.controllers');
+    var controllers = angular.module('rhymebin.controllers');
 
     controllers.controller('RegisterController', ['$scope', '$auth', '$state', function($scope, $auth, $state) {
         $scope.errors = [];

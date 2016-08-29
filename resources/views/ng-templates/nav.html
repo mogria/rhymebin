@@ -15,18 +15,27 @@
     </div>
 
     <div class="collapse navbar-collapse" id="collapse-navbar">
-        <ul class="nav navbar-nav" ui-view="nav">
+        <ul class="nav navbar-nav navbar-left" ui-view="nav">
             <li ng-class="{active: currentUrl === '/'}"><a href="#/">Home</a></li>
             <li ng-class="{active: currentUrl === '/about'}"><a href="#/about">About</a></li>
             <li ng-class="{active: currentUrl === '/words'}"><a href="#/words">Words</a></li>
-            
-            <!-- show when user is logged in -->
             <li ng-class="{active: currentUrl === '/words/new'}" ng-show="loggedIn"><a href="#/words/new">Add Words</a></li>
-            <li ng-show="loggedIn"><a ng-click="logout()" href="">Log out</a><li>
-            
-            <!-- show when user is logged out -->
             <li ng-class="{active: currentUrl === '/register'}" ng-show="!loggedIn"><a href="#/register">Register</a></li>
+        </ul>
+ 
+        
+        <form class="navbar-form navbar-left" id="nav-language-form" novalidate>
+            <div class="form-group">
+                <label for="user">Language&nbsp;&nbsp;&nbsp;</label>
+                <select class="form-control" name="language" ng-model="nav.language" ng-options="language as language.name for language in nav.availableLanguages track by language.id" required>
+                </select>
+            </div>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-show="loggedIn"><a ng-click="logout()" href="">Log out</a><li>
             <li ng-class="{active: currentUrl === '/login:name'}" ng-show="!loggedIn"><a href="#/login">Login</a></li>
         </ul>
     </div>
+
 </div>

@@ -2,29 +2,20 @@
 <form ng-submit="wordSubmit()" novalidate remote-validate>
     
     <span class="validation-error" ng:show="Article.$serverError.user.$invalid">
-                    {{Article.$serverError.user.message}}
+        {{Article.$serverError.user.message}}
     </span>
-    
-        
-    <div class="form-group">
-        <label for="user">Language</label>
-        <select class="form-control" name="language" ng-model="language" ng-options="language as language.name for language in availableLanguages track by language.id" required>
-        </select>
-    </div>
-    <errors-for field="language"></errors-for>
-    
     
     <div class="form-group">
         <label for="user">Word</label>
-        <input type="text" class="form-control" name="word" ng-model="word" ng-change="updateSyllables()">
+        <input type="text" class="form-control" name="word" ng-model="entryData.word" ng-change="updateSyllables()">
     </div>
     <errors-for field="word"></errors-for>
     
     <div class="form-group big">
-        <div ng-repeat="(i,syllable) in syllables" class="syllable-entry">
+        <div ng-repeat="(i,syllable) in entryData.syllables" class="syllable-entry">
             <div class="syllable-container">
                 <span class="syllable-display">{{syllable.syllable}}</span>
-                <vowel-selection syllable="syllable" vowels="vowels"></vowel-selection>
+                <vowel-selection syllable="syllable" vowels="entryData.vowels"></vowel-selection>
             </div>
             <input type="button" ng-if="!$last" class="btn btn-default syllable-merger-button" ng-click="mergeSyllables(syllable)" value="+" />
         </div>

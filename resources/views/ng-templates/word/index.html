@@ -1,11 +1,5 @@
 <h1>Words</h1>
 <form novalidate>
-    <div class="form-group">
-        <label for="user">Language</label>
-        <select class="form-control" name="language" ng-model="language" ng-options="language as language.name for language in availableLanguages track by language.id" required>
-        </select>
-    </div>
-
     <div class="words">
         <div ng-repeat="word in words" class="word-list-item">
             <div class="word">

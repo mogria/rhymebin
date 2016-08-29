@@ -36,6 +36,7 @@ var paths = {
           , jscomponent('bootstrap-sass/assets/javascripts/bootstrap/collapse' )
           , jscomponent('bootstrap-sass/assets/javascripts/bootstrap')
           , jscomponent('satellizer/satellizer')
+          , jscomponent('ngstorage/ngStorage')
           , js('controllers')
           , js('controllers/*')
           , js('directives')

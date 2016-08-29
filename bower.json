@@ -28,7 +28,8 @@
     "angular-ui-router": "^0.2.18",
     "satellizer": "^0.14.0",
     "angular-resource": "^1.5.5",
-    "angular-sanitize": "^1.5.7"
+    "angular-sanitize": "^1.5.7",
+    "ngstorage": "gsklee/ngStorage#^0.3.11"
   },
   "devDependencies": {
     "livereload-js": "master"
