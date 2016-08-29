@@ -20,6 +20,8 @@ var js = function(name) {
     return './vendor/bower_components/' + name + '.js';
 },  scss = function(name) {
     return './resources/assets/sass/' + name + '.scss';
+},  sasscomponent = function(name) {
+    return './vendor/bower_components/' + name;
 }
 
 
@@ -117,7 +119,10 @@ gulp.task('js-live-reload', function() {
 gulp.task('sass-compile', function() {
     return gulp.src(paths.sass)
         .pipe(sourcemaps.init())
-            .pipe(sass())
+            .pipe(sass({
+                outputStyle: 'expanded',
+                includePaths: [sasscomponent('bootstrap-sass/assets/stylesheets')]
+            }).on('error', sass.logError))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(target_dirs.css));
 });
