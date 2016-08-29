@@ -1,4 +1,4 @@
-@import "vendor/bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "bootstrap";
 
 .words {
     .word-list-item {
@@ -76,8 +76,8 @@
                 border-style: solid;
                 border-radius: 5px;
                 position: absolute;
-                @border-top-radius($border-radius-base);
-                @border-bottom-radius($border-radius-base);
+                @include border-top-radius($border-radius-base);
+                @include border-bottom-radius($border-radius-base);
                 width: 420px;
 
                 .vowel-with-examples {
