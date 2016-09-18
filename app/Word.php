@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /*
-+-------------+------------------+------+-----+---------+----------------+
-| Field       | Type             | Null | Key | Default | Extra          |
-+-------------+------------------+------+-----+---------+----------------+
-| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-| language_id | int(10) unsigned | NO   | MUL | NULL    |                |
-| created_at  | timestamp        | YES  |     | NULL    |                |
-| updated_at  | timestamp        | YES  |     | NULL    |                |
-| word        | varchar(255)     | NO   |     | NULL    |                |
-+-------------+------------------+------+-----+---------+----------------+
++----------------+------------------+------+-----+---------+----------------+
+| Field          | Type             | Null | Key | Default | Extra          |
++----------------+------------------+------+-----+---------+----------------+
+| id             | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| language_id    | int(10) unsigned | NO   | MUL | NULL    |                |
+| created_at     | timestamp        | YES  |     | NULL    |                |
+| updated_at     | timestamp        | YES  |     | NULL    |                |
+| word           | varchar(255)     | NO   |     | NULL    |                |
+| syllable_count | int(10) unsigned | NO   |     | NULL    |                |
++----------------+------------------+------+-----+---------+----------------+
 */
 class Word extends Model 
 {
