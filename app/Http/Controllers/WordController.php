@@ -119,7 +119,7 @@ class WordController extends Controller {
             $syllablesInWords = $wordsFound->map(function($word) {
                 return $word->syllableMappings()->get();
             })->flatten(1);
-            return array_merge($this->findRhymesForSyllables($syllablesInWords, $language_id), ['log' => \DB::getQueryLog()]);
+            return array_merge($this->findRhymesForSyllables($syllablesInWords, $language_id, $wordsFound), ['log' => \DB::getQueryLog()]);
         } else {
             $recognizedWords = $wordsFound->map(function($word) { return $word->word; })->all();
             $unrecognizedWords = array_diff($wordsGiven, $recognizedWords);
@@ -132,7 +132,7 @@ class WordController extends Controller {
         }
     }
 
-    private function findRhymesForSyllables($syllableSearch, $language_id) {
+    private function findRhymesForSyllables($syllableSearch, $language_id, $wordsFound) {
         $syllableConditions = $syllableSearch->map(function($syllableMapping) {
             return [['syllable_mappings.syllable_number', $syllableMapping->syllable_number],
                     ['syllable_mappings.vowel_id', $syllableMapping->vowel_id]];
@@ -144,7 +144,9 @@ class WordController extends Controller {
 
         $query = Word::join('syllable_mappings', 'words.id', '=', 'syllable_mappings.word_id')
             ->join('syllables', 'syllables.id', '=', 'syllable_mappings.syllable_id')
-            ->where('words.language_id', $language_id);
+            ->where('words.language_id', $language_id)
+            ->whereNotIn('syllable_mappings.word_id', $wordsFound->map(function($word) { return $word['id']; })->toArray());
+                
 
         $query->where(function($query) use ($syllableConditions) {
             foreach($syllableConditions as $condition) {
@@ -162,6 +164,7 @@ class WordController extends Controller {
             ->whereIn('words.id', $wordIds)
             ->get()
             ->groupBy('word_id');
+        $words = Word::whereIn('id', $wordIds)->orderBy('id', 'ASC');
         return collect($rhymingSyllablesOfWords)
             ->zip($syllablesOfWords)
             ->map(function($rhymingSyllablesAndWord) {
@@ -198,23 +201,31 @@ class WordController extends Controller {
 
                 return [
                     'word' => $rhyme['word'],
-                    'syllable_count' => count($rhyme['rhymingSyllables']),
-                    'quality' => $quality
+                    'rhyming_syllable_count' => count($rhyme['rhymingSyllables']),
+                    'rhyming_quality' => $quality
                 ];
-        })->sort(function($rhyme1, $rhyme2) {
-            return $rhyme2['quality'] - $rhyme1['quality'];
-        })->all();
+            })->sortBy('id')
+            ->zip($words->get())
+            ->map(function($rhymeAndWord) {
+                $rhyme = $rhymeAndWord[0];
+                $rhyme['word'] = $rhymeAndWord[1];
+                return $rhyme;
+            })->sort(function($rhyme1, $rhyme2) {
+                return ceil($rhyme2['rhyming_quality'] - $rhyme1['rhyming_quality']);
+            })->all();
     }
 
     private function determineEndingQuality($syllables, $rhymingSyllables) {
         $numSyllables = count($syllables);
-        $quality = collect($syllables)
+        $sumAndMaxScore = collect($syllables)
             ->zip($rhymingSyllables)
-            ->reduce(function($acc, $syllables) use ($numSyllables) {
-                $endingScore = $syllables[0]['syllable_number'] + $numSyllables + 1;
-                return $acc + ($syllables[1] == null ? 0 : $endingScore);
-            }, 0);
-        return $quality / ($numSyllables * ($numSyllables + 1) / 2);
+            ->reduce(function($sumAndMaxScore, $syllables) use ($numSyllables) {
+                $endingScore = $syllables[0]['syllable_number'] + $numSyllables + 1 + $numSyllables;
+                return [$sumAndMaxScore[0] + ($syllables[1] == null ? 0 : $endingScore), $sumAndMaxScore[1] + $endingScore];
+            }, [0, 0]);
+        $sum = $sumAndMaxScore[0];
+        $maxScore = $sumAndMaxScore[1];
+        return $sum / $maxScore; #($numSyllables * ($numSyllables + 1) / 2);
     }
 
     private function utf8StringToCharArray($str) {
