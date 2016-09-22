@@ -1,12 +1,11 @@
 <h1>Words</h1>
 <form novalidate>
     <div class="words">
-        <div ng-repeat="word in words" class="word-list-item">
-            <word word="word"></word>
-            <div class="word-actions">
+        <div ng-repeat="word in words" class="word-list-item" class="row">
+            <word word="word" class="col-xs-8 col-sm-4"></word>
+            <div class="word-actions" class="col-xs-4 col-sm-2">
                 <a href="#/languages/{{word.language_id}}/words/{{word.id}}">Show</a>
             </div>
-
             <div class="clear"></div>
         </div>
     </div>

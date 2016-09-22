@@ -13,9 +13,24 @@
         </div>
     </form>
 </div>
-<div id="searchResultContainer words">
-    <div class="searchResult row" ng-repeat="rhyme in display.results">
-        <word word="rhyme.word" class="col-xs-8 col-sm-8 col-md-10"></word>
+<div class="row search-error-container alert alert-danger" ng-show="display.error">
+    {{display.errorMessage}}
+</div>
+<div class="row search-info-container alert alert-success" ng-show="display.success && display.numResults > 0">
+    <span ng-show="display.numResults > 1">{{display.numResults}} rhymes found!</span>
+    <span ng-show="display.numResults == 1">Only {{display.numResults}} rhyme found!</span>
+</div>
+<div class="row search-info-container alert alert-warn" ng-show="display.success && display.numResults == 0">
+    No rhyme found.
+</div>
+<div id="search-result-container" ng-show="display.results.length > 0">
+    <div class="search-result-header row">
+        <div class="col-xs-8 col-md-10">Rhyme</div>
+        <div class="col-xs-2 col-md-1">Syllables</div>
+        <div class="col-xs-2 col-md-1">Quality</div>
+    </div>
+    <div class="search-result row" ng-repeat="rhyme in display.results">
+        <word word="rhyme.word" class="col-xs-8 col-md-10"></word>
         <div class="rhymeQuality col-xs-2 col-md-1">
             {{rhyme.rhyming_syllable_count}}
         </div>

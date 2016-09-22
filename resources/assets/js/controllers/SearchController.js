@@ -5,17 +5,33 @@
         $scope.input = {
             'search': ('' + $stateParams.search) || '',
         };
-        $scope.display = {
-            'results': []
+
+        var resetDisplay = function() {
+            $scope.display = {
+                'results': [],
+                'error': false,
+                'success': false,
+                'numResults': 0,
+                'errorMessage': ""
+            };
         };
 
+        resetDisplay();
+
         $scope.search = function() {
+            resetDisplay();
             var searchTerm = $scope.input.search;
             RhymeService.search(searchTerm, function(response) {
-                $scope.display.results = response.data;
+                if(response.data.error) {
+                    $scope.display.error = true;
+                    $scope.display.errorMessage = response.data.error + ': ' + response.data.unrecognized_words.join(', ');
+                } else {
+                    $scope.display.results = response.data;
+                    $scope.display.numResults = $scope.display.results.length;
+                    $scope.display.success = true;
+                }
             }, function(response) {
                 if(response.data.hasOwnProperty('validationErrors')) {
-                    console.log($scope.errors);
                     $scope.errors = response.data.validationErrors;
                 }
             });
