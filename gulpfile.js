@@ -187,7 +187,7 @@ gulp.task('onepage', ['js-minify', 'css-minify'], function(done) {
         }
         var javascript = inlineEncode(fs.readFileSync(target_dirs.js + 'app.min.js', {encoding: 'utf8'}));
         var css = inlineEncode(fs.readFileSync(target_dirs.css + 'app.purified.min.css', {encoding: 'utf8'}));
-        file('spa.html', stdout, { src: true })
+        file('index.html', stdout, { src: true })
             .pipe(htmlmin({
                 caseSensitive: true, // custom tags, don't modify them because of angular
                 collapseWhitespace: true,
@@ -243,7 +243,7 @@ gulp.task('clean', function() {
         [ target_dirs.js
         , target_dirs.css
         , target_dirs.version + 'version'
-        , target_dirs.onepage + 'spa.html'
+        , target_dirs.onepage + 'index.html'
         ], { read: false })
         .pipe(clean());
 });

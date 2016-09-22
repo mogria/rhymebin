@@ -13,11 +13,8 @@
 
 $app->get('/', function() {
     if(env('APP_ENV', '') === 'production') {
-        ob_start();
-        echo file_get_contents(public_path('spa.html'));
-        $content = ob_get_contents();
-        ob_end_clean();
-        return $content;
+        \Log::warn('serving production index.html via php\'s file_get_contents, better configure your web server to prefer index.html over index.php');
+        return file_get_contents(public_path('index.html'));
     }
     return view('index'); 
 });
