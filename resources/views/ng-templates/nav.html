@@ -18,6 +18,7 @@
         <ul class="nav navbar-nav navbar-left" ui-view="nav">
             <li ng-class="{active: nav.currentUrl === '/'}"><a href="#/">Home</a></li>
             <li ng-class="{active: nav.currentUrl === '/about'}"><a href="#/about">About</a></li>
+            <li ng-class="{active: nav.currentUrl === '/search/:search'}"><a href="#/search/">Search</a></li>
             <li ng-class="{active: nav.currentUrl === '/words'}"><a href="#/words">Words</a></li>
             <li ng-class="{active: nav.currentUrl === '/words/new'}" ng-show="nav.loggedIn"><a href="#/words/new">Add Words</a></li>
             <li ng-class="{active: nav.currentUrl === '/register'}" ng-show="!nav.loggedIn"><a href="#/register">Register</a></li>

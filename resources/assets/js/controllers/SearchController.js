@@ -1,17 +1,24 @@
 (function() {
     var controllers = angular.module('rhymebin.controllers');
 
-    controllers.controller('SearchController', ['$scope', '$stateParams', 'LanguageService', function($scope, $stateParams, LanguageService) {
+    controllers.controller('SearchController', ['$scope', '$stateParams', 'RhymeService', function($scope, $stateParams, RhymeService) {
         $scope.input = {
             'search': ('' + $stateParams.search) || '',
         };
         $scope.display = {
-            'results': ['Rest', 'Test']
+            'results': []
         };
 
         $scope.search = function() {
             var searchTerm = $scope.input.search;
-            console.log('Searching for "' + searchTerm + '"');
+            RhymeService.search(searchTerm, function(response) {
+                $scope.display.results = response.data;
+            }, function(response) {
+                if(response.data.hasOwnProperty('validationErrors')) {
+                    console.log($scope.errors);
+                    $scope.errors = response.data.validationErrors;
+                }
+            });
         };
 
         if($stateParams.search) {
