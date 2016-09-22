@@ -54,6 +54,8 @@ var paths = {
     lrjs: [ jscomponent('livereload-js/dist/livereload')
           ],
     tmpl: [ 'resources/views/ng-templates/*.html'
+          , 'resources/views/ng-templates/forms/*.html'
+          , 'resources/views/ng-templates/word/*.html'
           , 'resources/views/index.php'
           ]
 }
