@@ -119,7 +119,7 @@ class WordController extends Controller {
             $syllablesInWords = $wordsFound->map(function($word) {
                 return $word->syllableMappings()->get();
             })->flatten(1);
-            return array_merge($this->findRhymesForSyllables($syllablesInWords, $language_id, $wordsFound), ['log' => \DB::getQueryLog()]);
+            return array_values($this->findRhymesForSyllables($syllablesInWords, $language_id, $wordsFound));
         } else {
             $recognizedWords = $wordsFound->map(function($word) { return $word->word; })->all();
             $unrecognizedWords = array_diff($wordsGiven, $recognizedWords);
@@ -164,11 +164,12 @@ class WordController extends Controller {
             ->whereIn('words.id', $wordIds)
             ->get()
             ->groupBy('word_id');
-        $words = Word::whereIn('id', $wordIds)->orderBy('id', 'ASC');
+        $words = Word::with('syllableMappings', 'syllableMappings.vowel', 'syllableMappings.syllable')->whereIn('id', $wordIds)->orderBy('id', 'ASC');
         return collect($rhymingSyllablesOfWords)
             ->zip($syllablesOfWords)
             ->map(function($rhymingSyllablesAndWord) {
                 $rhymingSyllables = $rhymingSyllablesAndWord[0];
+                $word_id = $rhymingSyllables[0]['word_id'];
                 $word = $rhymingSyllables[0]['word'];
                 $syllables = $rhymingSyllablesAndWord[1]->sortByDesc('syllable_number');
                 $filledUpRhymingSyllables = $syllables->map(function($syllable) use($rhymingSyllables) {
@@ -177,6 +178,7 @@ class WordController extends Controller {
                     });
                 });
                 return [
+                    'id' => $word_id,
                     'word' => $word,
                     'rhymingSyllables' => $filledUpRhymingSyllables,
                     'syllables' => $syllables
@@ -200,15 +202,17 @@ class WordController extends Controller {
                 }, 0);
 
                 return [
+                    'id' => $rhyme['id'],
                     'word' => $rhyme['word'],
-                    'rhyming_syllable_count' => count($rhyme['rhymingSyllables']),
+                    'rhyming_syllable_count' => count($rhyme['rhymingSyllables']->filter(function($syllable) { return !!$syllable; })),
                     'rhyming_quality' => $quality
                 ];
             })->sortBy('id')
             ->zip($words->get())
-            ->map(function($rhymeAndWord) {
+            ->map(function($rhymeAndWord) use ($controller, $language_id) {
                 $rhyme = $rhymeAndWord[0];
-                $rhyme['word'] = $rhymeAndWord[1];
+                $rhyme['word'] = $controller->convertWord($rhymeAndWord[1], $language_id);
+                unset($rhyme['id']);
                 return $rhyme;
             })->sort(function($rhyme1, $rhyme2) {
                 return ceil($rhyme2['rhyming_quality'] - $rhyme1['rhyming_quality']);
