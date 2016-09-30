@@ -34,7 +34,7 @@ var paths = {
           , jscomponent('angular-resource/angular-resource')
           , jscomponent('angular-sanitize/angular-sanitize')
           , jscomponent('angular-ui-router/release/angular-ui-router')
-          , jscomponent('jquery/dist/jquery') // bootstraps javascript requires jQuery, but we'll use zepto instead ...
+          , jscomponent('jquery/dist/jquery') // bootstraps javascript requires jQuery
           , jscomponent('bootstrap-sass/assets/javascripts/bootstrap/collapse' )
           , jscomponent('bootstrap-sass/assets/javascripts/bootstrap')
           , jscomponent('satellizer/satellizer')
@@ -184,11 +184,12 @@ gulp.task('onepage', ['js-minify', 'css-minify'], function(done) {
         }
         var inlineEncode = function(str) {
             return str.replace(/\$/g, '$$$$')
-                //.replace(/</g, '\\x3C')
-                //.replace(/>/g, '\\x3E');
         }
         var javascript = inlineEncode(fs.readFileSync(target_dirs.js + 'app.min.js', {encoding: 'utf8'}));
         var css = inlineEncode(fs.readFileSync(target_dirs.css + 'app.purified.min.css', {encoding: 'utf8'}));
+        var htaccess = fs.readFileSync(target_dirs.onepage + '/.htaccess.in');
+        var cspNonce = Math.random().toString(36).substring(2,10);
+
         file('index.html', stdout, { src: true })
             .pipe(htmlmin({
                 caseSensitive: true, // custom tags, don't modify them because of angular
@@ -212,9 +213,14 @@ gulp.task('onepage', ['js-minify', 'css-minify'], function(done) {
             }))
             .on('error', util.log)
             .pipe(replace(/<link [^>]*href=['"]?css\/app[^>]+>/, '<style>/*<!--*/' + css + '/*-->*/</style>'))
-            .pipe(replace(/<script [^>]*src=['"]?js\/app[^>]+><\/script>/, '<script type="text/javascript">/*<!--*/' + javascript + '//--></script>'))
+            .pipe(replace(/<script [^>]*src=['"]?js\/app[^>]+><\/script>/, '<script type="text/javascript" nonce="' + cspNonce + '">/*<!--*/' + javascript + '//--></script>'))
             .pipe(gulp.dest(target_dirs.onepage))
-            .on('end', done);
+            .on('end', function() {
+                file('.htaccess', htaccess, { src: true })
+                    .pipe(replace(/@nonce@/, cspNonce))
+                    .pipe(gulp.dest(target_dirs.onepage))
+                    .on('end', done);
+            });
     });
 });
  

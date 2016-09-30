@@ -5,6 +5,8 @@
 
     RewriteEngine On
 
+    Header set Content-Security-Policy "default-src 'none'; img-src 'self'; script-src 'nonce-@nonce@' 'strict-dynamic' 'unsafe-inline' 'none'; style-src 'unsafe-inline'; connect-src 'self'; font-src 'self'"
+
     # Don't let apache remove the Authorization header
     RewriteCond %{HTTP:Authorization} ^(.*)
     RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]

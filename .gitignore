@@ -5,7 +5,8 @@
 /public/js
 /public/css
 /public/build
-/public/spa.html
+/public/index.html
+/public/.htaccess
 /public/version
 /tmp
 *~
