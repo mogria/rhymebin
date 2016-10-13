@@ -9,12 +9,17 @@ use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Eloquent\Lcs\LcsSolver;
-
-define('VOCAL_POSITION_START',  0x04);
-define('VOCAL_POSITION_MIDDLE', 0x02);
-define('VOCAL_POSITION_END',    0x01);
+use App\Helpers\RhymeHelper;
+use App\Helpers\SyllableHelper;
 
 class WordController extends Controller {
+
+    protected $rhymeHelper;
+
+    public function __construct(RhymeHelper $rhymeHelper) {
+        $this->rhymeHelper = $rhymeHelper;
+    }
+
     private function convertSyllableWithMapping(Syllable $syllable, SyllableMapping $syllableMapping, $language_id, $with_examples = false) {
         return [
             'id' => $syllable->id,
@@ -263,8 +268,8 @@ class WordController extends Controller {
             $rhymeSyllable = $rhymeAndSearchSyllable[0];
             $searchSyllable = $rhymeAndSearchSyllable[1];
 
-            $a = $this->determineVocalPosition($rhymeSyllable['syllable']);
-            $b = $this->determineVocalPosition($searchSyllable['syllable']['syllable']);
+            $a = SyllableHelper::vocalPosition($rhymeSyllable['syllable']);
+            $b = SyllableHelper::vocalPosition($searchSyllable['syllable']['syllable']);
             $diff = $a ^ $b;
             $numBitsSet = substr_count(base_convert($diff . "", 10, 2), "1");
             return (3 - $numBitsSet) / 3;
@@ -272,22 +277,5 @@ class WordController extends Controller {
             return $sum + $v;
         }, 0);
         return $qualitySum / $maxSyllables;
-    }
-
-    private function determineVocalPosition($syllable) {
-        $vocals = ['a', 'e', 'i', 'o', 'u', 'y'];
-        $lowerSyllable = strtolower($syllable);
-        $length = mb_strlen($syllable);
-
-        $vocalPositions = collect($vocals)->map(function($vocal) use ($lowerSyllable) {
-            return strpos($lowerSyllable, $vocal);
-        })->filter(function($position) {
-            return $position !== false;
-        });
-
-        // test for start end and middle, because a syllable might just be of length 1 or 2
-        return ($vocalPositions->contains(0)           ? VOCAL_POSITION_START  : 0)
-             | ($vocalPositions->contains($length - 1) ? VOCAL_POSITION_END    : 0)
-             | (count($vocalPositions->toArray()) > 2  ? VOCAL_POSITION_MIDDLE : 0);
     }
 }
