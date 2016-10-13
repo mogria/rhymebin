@@ -38,14 +38,7 @@ kill_tasks
 echo "RhymeBin: killing previous processes, if they are still running"
 
 echo "RhymeBin: Running gulp watch with live-reload ... "
-GULP=gulp
-gulp -v 2>&1 /dev/null
-if [ "$?" -ne 0 ]; then
-    GULP="node ./node_modules/gulp/bin/gulp.js"
-fi
-
-echo "$GULP"
-$GULP watch &
+gulp watch &
 
 # save PID for gulp watch to kill it later
 echo $! > tmp/gulp.pid
