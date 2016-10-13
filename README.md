@@ -1,4 +1,4 @@
-# Rhymebin
+# RhymeBin
 
 A single page application for finding rhymes with its own rhyme database. You need to populate the database yourself (as of now). Every word also needs the information on how to split syllables and the phonetic sign for it's vowel. This information is then used to give better rhymes and find more rhymes.
 
@@ -35,11 +35,11 @@ For development you can use the `serve.sh` script to run PHPs own internal webse
 
     $ ./serve.sh
      ____  _     _   _           _   _ ____  _
-     |  _ \| |__ (_) (_)_ __ ___ (_)_(_) __ )(_)_ __
-     | |_) | '_ \| | | | '_ ` _ \ / _ \|  _ \| | '_ \
-     |  _ <| | | | |_| | | | | | |  __/| |_) | | | | |
-     |_| \_\_| |_|\__, |_| |_| |_|\___||____/|_|_| |_|
-                  |___/
+    |  _ \| |__ (_) (_)_ __ ___ (_)_(_) __ )(_)_ __
+    | |_) | '_ \| | | | '_ ` _ \ / _ \|  _ \| | '_ \
+    |  _ <| | | | |_| | | | | | |  __/| |_) | | | | |
+    |_| \_\_| |_|\__, |_| |_| |_|\___||____/|_|_| |_|
+                 |___/
     RhymeBin: killing previous processes, if they are still running
     RhymeBin: Running gulp watch with live-reload ... 
     RhymeBin: Running PHPs own webserver on 127.0.0.1:1337 WEBROOT=public/  ... 
@@ -62,9 +62,10 @@ PHPUnit is used as the testing framework. You can run the tests like this:
 
 [Deployer](https://github.com/deployphp/deployer) is being used to deploy this project to a server. See the [`deploy.php`](https://github.com/mogria/rhymebin/blob/master/deploy.php) for the configuration.
 
-For production live reload is being disabled and `gulp --production` is run. This will combine all HTML, angular templates, CSS & HTML into a single file and save it in `public/index.html`. There is also a `.htaccess` which gets generated for easy integration with apache. Just make the `public` folder the RootDirectory of your VirtualHost.
+For production LiveReload is being disabled and `gulp --production` is run. This will combine all HTML, angular templates, CSS & HTML into a single file and save it in `public/index.html`. There is also a `.htaccess` which gets generated for easy integration with apache. Just make the `public` folder the RootDirectory of your VirtualHost.
 Additionally you need to configure your `.env` file for your sever for the database backend (but just once, because it's shared between releases).
 **Important:** Don't forget to change the `APP_SECRET`.
 
 ## License
+
 The Rhymebin is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
