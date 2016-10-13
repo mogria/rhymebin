@@ -58,5 +58,13 @@ PHPUnit is used as the testing framework. You can run the tests like this:
 
     phpunit
 
+## Deployment
+
+[Deployer](https://github.com/deployphp/deployer) is being used to deploy this project to a server. See the [`deploy.php`](https://github.com/mogria/rhymebin/blob/master/deploy.php) for the configuration.
+
+For production live reload is being disabled and `gulp --production` is run. This will combine all HTML, angular templates, CSS & HTML into a single file and save it in `public/index.html`. There is also a `.htaccess` which gets generated for easy integration with apache. Just make the `public` folder the RootDirectory of your VirtualHost.
+Additionally you need to configure your `.env` file for your sever for the database backend (but just once, because it's shared between releases).
+**Important:** Don't forget to change the `APP_SECRET`.
+
 ## License
 The Rhymebin is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
