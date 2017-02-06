@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# workaround for direnv because there are no aliases
+# and npm doesnt create a 'gulp' executable, so lets just
+# the scripts/ folder to path and pass on the arguments.
+
+SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SOURCE_DIR/.." # change to project directory
+node_modules/gulp/bin/gulp.js "$@"
