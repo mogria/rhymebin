@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cat <<'INTRO'
  ____  _     _   _           _   _ ____  _
