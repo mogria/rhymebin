@@ -9,7 +9,7 @@
         "laravel/lumen-framework": "5.2.*",
         "vlucas/phpdotenv": "~2.2",
         "tymon/jwt-auth": "^1.0@dev",
-        "basicit/lumen-vendor-publish": "^1.0",
+        "laravelista/lumen-vendor-publish": "^1.0",
         "mlntn/lumen-artisan-route-list": "~1",
         "niellles/lumen-commands": "dev-master",
         "eloquent/lcs": "^2.0"
