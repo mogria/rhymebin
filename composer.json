@@ -6,12 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/lumen-framework": "5.2.*",
-        "vlucas/phpdotenv": "~2.2",
+        "laravel/lumen-framework": "5.4.*",
+        "vlucas/phpdotenv": ">=2.4",
         "tymon/jwt-auth": "^1.0@dev",
         "laravelista/lumen-vendor-publish": "^1.0",
-        "mlntn/lumen-artisan-route-list": "~1",
-        "niellles/lumen-commands": "dev-master",
+        "jubayed/lumen-commands": "dev-master",
         "eloquent/lcs": "^2.0"
     },
     "require-dev": {

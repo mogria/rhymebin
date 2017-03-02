@@ -14,7 +14,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \BasicIT\LumenVendorPublish\VendorPublishCommand::class,
-        \Mlntn\Console\Commands\RouteList::class
     ];
 
     /**
