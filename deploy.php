@@ -1,13 +1,16 @@
 <?php
 
+namespace Deployer;
 require 'recipe/laravel.php';
 
 server('production', 'codeanarchy.org')
   ->user('rhymebin-deployer')
   ->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa', '')
-  ->env('deploy_path', '/home/rhymebin-deployer/www')
+  ->set('deploy_path', '/home/rhymebin-deployer/www')
   ->stage('production');
 
+set('ssh_type', 'native');
+set('ssh_multiplexing', true);
 set('repository', 'https://github.com/mogria/rhymebin.git');
 
 // use www-data user of apache
@@ -20,15 +23,15 @@ before('deploy:vendors', 'deploy:copy_dirs');
 
 set('keep_releases', 10); // keep the last 10 releases
 
-env('bin/npm', function() {
+set('bin/npm', function() {
   return run('which npm')->toString();
 });
 
-env('bin/bower', function() {
+set('bin/bower', function() {
   return run('which bower')->toString();
 });
 
-env('bin/gulp', function() {
+set('bin/gulp', function() {
   return run('which gulp')->toString();
 });
 
